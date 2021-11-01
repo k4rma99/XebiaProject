@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BookStore1.Models.UserTable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UFname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.USname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UMailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UAccountStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.URole)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UFname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UMailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UAccountStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.URole)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

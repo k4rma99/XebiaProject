@@ -1,0 +1,83 @@
+﻿@model BookStore1.Models.BookTable
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BookTable</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BIsbn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BIsbn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BPosition)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BPosition)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BStatus)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BQuantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BQuantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.A)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.A.ACountry)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.C)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.C.CDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BImage)
+        </dt>
+        @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BImage)
+        </dd>*@
+        <dd>
+            <img src="@("/Images/Books/"+Model.BImage)" width="200" height="200" class="img-responsive" />
+
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

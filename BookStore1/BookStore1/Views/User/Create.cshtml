@@ -1,0 +1,63 @@
+﻿@model BookStore1.Models.UserTable
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>UserTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UId" class="control-label"></label>
+                <input asp-for="UId" class="form-control" />
+                <span asp-validation-for="UId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UFname" class="control-label"></label>
+                <input asp-for="UFname" class="form-control" />
+                <span asp-validation-for="UFname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="USname" class="control-label"></label>
+                <input asp-for="USname" class="form-control" />
+                <span asp-validation-for="USname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UPhone" class="control-label"></label>
+                <input asp-for="UPhone" class="form-control" />
+                <span asp-validation-for="UPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UMailId" class="control-label"></label>
+                <input asp-for="UMailId" class="form-control" />
+                <span asp-validation-for="UMailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UAccountStatus" class="control-label"></label>
+                <input asp-for="UAccountStatus" class="form-control" />
+                <span asp-validation-for="UAccountStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="URole" class="control-label"></label>
+                <input asp-for="URole" class="form-control" />
+                <span asp-validation-for="URole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

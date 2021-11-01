@@ -1,0 +1,84 @@
+﻿@model BookStore1.Models.BookTable
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BookTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BId" />
+            <div class="form-group">
+                <label asp-for="BName" class="control-label"></label>
+                <input asp-for="BName" class="form-control" />
+                <span asp-validation-for="BName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CId" class="control-label"></label>
+                <select asp-for="CId" class="form-control" asp-items="ViewBag.CId"></select>
+                <span asp-validation-for="CId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AId" class="control-label"></label>
+                <select asp-for="AId" class="form-control" asp-items="ViewBag.AId"></select>
+                <span asp-validation-for="AId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BIsbn" class="control-label"></label>
+                <input asp-for="BIsbn" class="form-control" />
+                <span asp-validation-for="BIsbn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BPrice" class="control-label"></label>
+                <input asp-for="BPrice" class="form-control" />
+                <span asp-validation-for="BPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BDescription" class="control-label"></label>
+                <input asp-for="BDescription" class="form-control" />
+                <span asp-validation-for="BDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BPosition" class="control-label"></label>
+                <input asp-for="BPosition" class="form-control" />
+                <span asp-validation-for="BPosition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BStatus" class="control-label"></label>
+                <input asp-for="BStatus" class="form-control" />
+                <span asp-validation-for="BStatus" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="BImage" class="control-label"></label>
+            <input asp-for="BImage" class="form-control" />
+            <span asp-validation-for="BImage" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="BQuantity" class="control-label"></label>
+                <input asp-for="BQuantity" class="form-control" />
+                <span asp-validation-for="BQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PicFile" class="control-label"></label>
+                <input asp-for="PicFile" accept="image/*" />
+                <span asp-validation-for="PicFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,44 @@
+﻿@model BookStore1.Models.CouponTable
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CouponTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CoId" />
+            <div class="form-group">
+                <label asp-for="CoName" class="control-label"></label>
+                <input asp-for="CoName" class="form-control" />
+                <span asp-validation-for="CoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoExpiryDate" class="control-label"></label>
+                <input asp-for="CoExpiryDate" class="form-control" />
+                <span asp-validation-for="CoExpiryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoDiscount" class="control-label"></label>
+                <input asp-for="CoDiscount" class="form-control" />
+                <span asp-validation-for="CoDiscount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

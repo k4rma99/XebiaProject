@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BookStore1.Models.CategoryTable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CCreatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CDescription)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.CImage)
+        </td>*@
+            <td>
+                <img src="@("/Images/Categories/"+item.CImage)" width="200" height="200" class="img-responsive" />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPosition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCreatedAt)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

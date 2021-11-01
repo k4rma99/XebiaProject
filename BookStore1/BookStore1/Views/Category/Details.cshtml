@@ -1,0 +1,60 @@
+﻿@model BookStore1.Models.CategoryTable
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CategoryTable</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CDescription)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CPosition)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CPosition)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CCreatedAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CCreatedAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CImage)
+        </dt>
+        <dd>
+            <img src="@("/Images/Categories/"+Model.CImage)" width="200" height="200" class="img-responsive" />
+
+        </dd>
+        @*<dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CImage)
+        </dd>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
