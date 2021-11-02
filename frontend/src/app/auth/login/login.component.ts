@@ -9,21 +9,34 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup = new FormGroup({
-    email:new FormControl('',[Validators.required,Validators.email]),
-    password:new FormControl('',[Validators.required])
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
   })
-  constructor(private authService:AuthService) { }
+
+  isFilled: boolean = true;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  handleLogin(){
-    //console.log("Inside handleLogin");
+  handleLogin(): any {
+    //prevent submission and display error if form invalid
+    if (!this.loginForm.valid) {
+      this.isFilled = false;
+      return false;
+    }
+    this.isFilled = true;
     this.authService.login(this.loginForm.value).subscribe(
       res => {
-        sessionStorage.setItem('authToken',res.token);
+        sessionStorage.setItem('authToken', res.token);
+        sessionStorage.setItem('userRole', res.role);
         alert("Login Success");
+
+      },
+      err => {
+        alert("Login Failed");
       }
     )
   }
