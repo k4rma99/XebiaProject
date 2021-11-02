@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="aId" />
+    </Key>
+    <Property Name="aId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="Self.FK__Books__aId__282DF8C2" FromRole="Authors" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="bId" />
+    </Key>
+    <Property Name="bId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cId" Type="Int32" />
+    <Property Name="aId" Type="Int32" />
+    <Property Name="bISBN" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bPrice" Type="Double" Nullable="false" />
+    <Property Name="bDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bPosition" Type="Int32" Nullable="false" />
+    <Property Name="bStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bQuantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Author" Relationship="Self.FK__Books__aId__282DF8C2" FromRole="Books" ToRole="Authors" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Books__cId__2739D489" FromRole="Books" ToRole="Category" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__bId__3493CFA7" FromRole="Books" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="cId" />
+    </Key>
+    <Property Name="cId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cPosition" Type="Int32" Nullable="false" />
+    <Property Name="cCreatedAt" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Books" Relationship="Self.FK__Books__cId__2739D489" FromRole="Category" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="coId" />
+    </Key>
+    <Property Name="coId" Type="Int32" Nullable="false" />
+    <Property Name="coCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="coName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="coExpiryDate" Type="DateTime" Precision="0" />
+    <Property Name="coDiscount" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__orCoupon__2FCF1A8A" FromRole="Coupons" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="lId" />
+    </Key>
+    <Property Name="lId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uId" Type="Int32" />
+    <Property Name="lLogType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="lUserType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="lDateAndTime" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Logs__uId__37703C52" FromRole="Logs" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ordrId" />
+    </Key>
+    <Property Name="ordrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="oId" Type="Int32" />
+    <Property Name="uId" Type="Int32" />
+    <Property Name="bId" Type="Int32" />
+    <Property Name="bISBN" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bPrice" Type="Double" Nullable="false" />
+    <Property Name="bQuantity" Type="Int32" Nullable="false" />
+    <Property Name="oTotalPrice" Type="Double" Nullable="false" />
+    <Property Name="oShippingAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="oBillingAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="oPaymentMode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book" Relationship="Self.FK__OrderDetail__bId__3493CFA7" FromRole="OrderDetails" ToRole="Books" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderDetail__oId__32AB8735" FromRole="OrderDetails" ToRole="Orders" />
+    <NavigationProperty Name="User" Relationship="Self.FK__OrderDetail__uId__339FAB6E" FromRole="OrderDetails" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="oId" />
+    </Key>
+    <Property Name="oId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uId" Type="Int32" />
+    <Property Name="orDateAndTime" Type="DateTime" Precision="0" />
+    <Property Name="orCouponId" Type="Int32" />
+    <NavigationProperty Name="Coupon" Relationship="Self.FK__Orders__orCoupon__2FCF1A8A" FromRole="Orders" ToRole="Coupons" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__oId__32AB8735" FromRole="Orders" ToRole="OrderDetails" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Orders__uId__2EDAF651" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserAddress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uId" Type="Int32" />
+    <Property Name="uAddressLineOne" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uAddressLineTwo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="uLandMark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="uCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uPincode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserAddress__uId__1CBC4616" FromRole="UserAddresses" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uAccountStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uRole" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK__Logs__uId__37703C52" FromRole="Users" ToRole="Logs" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__uId__339FAB6E" FromRole="Users" ToRole="OrderDetails" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__uId__2EDAF651" FromRole="Users" ToRole="Orders" />
+    <NavigationProperty Name="UserAddresses" Relationship="Self.FK__UserAddress__uId__1CBC4616" FromRole="Users" ToRole="UserAddresses" />
+  </EntityType>
+  <EntityType Name="LoginCredential">
+    <Key>
+      <PropertyRef Name="uMailId" />
+      <PropertyRef Name="uPassword" />
+      <PropertyRef Name="uId" />
+      <PropertyRef Name="uRole" />
+    </Key>
+    <Property Name="uMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uRole" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Books__aId__282DF8C2">
+    <End Role="Authors" Type="Self.Author" Multiplicity="0..1" />
+    <End Role="Books" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="aId" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="aId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Books__cId__2739D489">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Books" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="cId" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="cId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDetail__bId__3493CFA7">
+    <End Role="Books" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="bId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="bId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__orCoupon__2FCF1A8A">
+    <End Role="Coupons" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupons">
+        <PropertyRef Name="coId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="orCouponId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Logs__uId__37703C52">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDetail__oId__32AB8735">
+    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="oId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="oId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDetail__uId__339FAB6E">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__uId__2EDAF651">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAddress__uId__1CBC4616">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserAddresses" Type="Self.UserAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="UserAddresses">
+        <PropertyRef Name="uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookStoreDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+    <EntitySet Name="Authors" EntityType="Self.Author" />
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Coupons" EntityType="Self.Coupon" />
+    <EntitySet Name="Logs" EntityType="Self.Log" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="UserAddresses" EntityType="Self.UserAddress" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="LoginCredentials" EntityType="Self.LoginCredential" />
+    <AssociationSet Name="FK__Books__aId__282DF8C2" Association="Self.FK__Books__aId__282DF8C2">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Books__cId__2739D489" Association="Self.FK__Books__cId__2739D489">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDetail__bId__3493CFA7" Association="Self.FK__OrderDetail__bId__3493CFA7">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__orCoupon__2FCF1A8A" Association="Self.FK__Orders__orCoupon__2FCF1A8A">
+      <End Role="Coupons" EntitySet="Coupons" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Logs__uId__37703C52" Association="Self.FK__Logs__uId__37703C52">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDetail__oId__32AB8735" Association="Self.FK__OrderDetail__oId__32AB8735">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDetail__uId__339FAB6E" Association="Self.FK__OrderDetail__uId__339FAB6E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__uId__2EDAF651" Association="Self.FK__Orders__uId__2EDAF651">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAddress__uId__1CBC4616" Association="Self.FK__UserAddress__uId__1CBC4616">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserAddresses" EntitySet="UserAddresses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

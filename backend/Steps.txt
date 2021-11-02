@@ -182,3 +182,13 @@ index.cshtml:
 
 make changes for delete and display
 change item to Model
+
+Jovel's edits
+=============
+-> Changed the schema
+-> created database and tables
+-> created a core api (didn't work out)
+-> created a framework api(v2), used ado model, generated controllers
+-> added a dummy data to user table
+-> tried running api, but there's an issue while fetching data. I believe it is because we are using foreign keys.
+   trying to find my way out of it.
