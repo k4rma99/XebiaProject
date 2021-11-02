@@ -1,0 +1,184 @@
+Database Creation
+----------------------------
+
+create database BookStoreDB
+use BookStoreDB
+
+create table Users
+(uId int primary key identity(1000,1),
+uFName nvarchar(50) not null,
+uLName nvarchar(50) not null,
+uPhone nvarchar(10) unique not null check  (uPhone like REPLICATE('[0-9]', 10)),
+uMailId nvarchar(50) unique not null check (uMailId like '%_@__%.__%'),
+uAccountStatus nvarchar(10) not null check (uAccountStatus in ('activated','deactivated')),
+uRole nvarchar(10) not null check (uRole in('user','admin')))
+
+create table LoginCredentials
+(userName nvarchar(50) unique not null,
+userPassword nvarchar(50) not null  check (len([userPassword])>(5)),
+userId int foreign key references Users(uId),
+userRole nvarchar(10) not null check (userRole in('user','admin')))
+
+
+create table UserAddresses 
+(uId int foreign key references Users(uId),
+uAddressLineOne nvarchar(100) not null,
+uAddressLineTwo nvarchar(100),
+uLandMark nvarchar(100),
+uCity nvarchar(50) not null,
+uState nvarchar(50) not null,
+uCountry nvarchar(50) not null,
+uPincode nvarchar(50) not null check(UPincode like REPLICATE('[0-9]', 6)))  
+
+
+create table Authors 
+(aId int primary key identity(100,1),
+aFName nvarchar(50) not null,
+aLName nvarchar(50),
+aCountry nvarchar(50) not null)
+
+create table Category 
+(cId int primary key identity(200,1),
+cName nvarchar(50) unique not null,
+cDescription nvarchar(300) not null,
+cImage nvarchar(50) not null,
+cStatus nvarchar(10)not null  check (cStatus in ('activated','deactivated')),
+cPosition int not null,
+cCreatedAt date)
+
+create table Books 
+(bId int primary key identity(5000,1),
+bName nvarchar(50) unique not null,
+cId int foreign key references Category(cId),
+aId int foreign key references Authors(aId),
+bISBN varchar(17) not null,
+bPrice float not null,
+bDescription nvarchar(300)not null,
+bPosition int not null, 
+bStatus nvarchar(10) not null check (bStatus in ('activated','deactivated')),
+bImage nvarchar(50) not null,
+bQuantity int not null)
+
+create table Coupons 
+(coId nvarchar(10) primary key,
+coName nvarchar(50) unique not null,
+coExpiryDate date,
+coDiscount float not null)
+
+create table Orders 
+(oId int primary key identity(10000,1),
+uId int foreign key references Users(uId),
+orDateAndTime date,
+orCouponId nvarchar(10) foreign key references Coupons(coId))
+
+create table OrderDetails 
+(oId int foreign key references Orders(oId),
+uId int foreign key references Users(uId),
+bId int foreign key references Books(bId),
+bISBN varchar(17) not null,
+bPrice float not null,
+bQuantity int not null,
+oTotalPrice float not null,
+oShippingAddress nvarchar(250) not null,
+oBillingAddress nvarchar(250) not null,
+oPaymentMode nvarchar(10) not null)
+
+
+
+create table Logs 
+(lId int primary key identity,
+uId int foreign key references Users(uId),
+lLogType nvarchar(20),
+lUserType nvarchar(10),
+lDateAndTime date)
+
+
+FEATURED BOOKS---------VIEW
+
+
+API Creation
+-------------------------
+ASP.NET Core Web App
+Dependencies-----manage-nugets package--install
+Microsoft.EntityFrameworkCore(3.1.20)
+Microsoft.EntityFrameworkCore.SqlServer(3.1.20)
+Microsoft.EntityFrameworkCore.Tools(3.1.20)
+Microsoft.VisualStudio.Web.CodeGeneration.Design(3.1.5)
+
+build soln
+tools------nuggetmanager----pkg manager console
+type:  Scaffold-DbContext "Server=IND431;Database=BookStoreDataBase;Trusted_Connection=true;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+add in appsettings.json:
+ "ConnectionStrings": {
+    "BookConStr": "Server=IND431;Database=BookStoreDB;Trusted_Connection=True;"
+  },
+
+add in startup.cs:
+  public void ConfigureServices(IServiceCollection services)
+        {
+           
+            services.AddDbContext<BookStoreDBContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("BookConStr")));
+        }
+
+add mvc controller with entity framework 
+
+add link for BookController and Category Controller in _Layout.cshtml
+
+
+
+Img Upload Settings
+----------------------------------
+in models:
+add:
+public IFormFile PicFile { get; set; }
+
+
+controler:
+ private readonly IWebHostEnvironment webHostEnvironment;
+        public BookController(BookStoreDBContext context, IWebHostEnvironment webHostEnvironment)
+        {
+            _context = context;
+            this.webHostEnvironment = webHostEnvironment;
+        }
+
+ public async Task<IActionResult> Create([Bind("BId,BName,CId,AId,BIsbn,BPrice,BDescription,BPosition,BStatus,BQuantity,PicFile")] BookTable bookTable)
+        {
+            if (ModelState.IsValid)
+            {
+                string rPath = webHostEnvironment.WebRootPath;
+                string fName = Path.GetFileNameWithoutExtension(bookTable.PicFile.FileName);
+                string ext = Path.GetExtension(bookTable.PicFile.FileName);
+                bookTable.BImage = fName + ext;
+                string path = rPath + "/Images/Books/" + bookTable.BImage;
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await bookTable.PicFile.CopyToAsync(fileStream);
+                }
+                _context.Add(bookTable);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+                //_context.Add(bookTable);
+                //await _context.SaveChangesAsync();
+                //return RedirectToAction(nameof(Index));
+
+            }
+
+in create.cshtml:
+<form asp-action="Create" enctype="multipart/form-data">
+<div class="form-group">
+                <label asp-for="PicFile" class="control-label"></label>
+                <input asp-for="PicFile" accept="image/*" />
+                <span asp-validation-for="PicFile" class="text-danger"></span>
+            </div>
+ 
+
+index.cshtml:
+<td>
+                <img src="@("/Images/Books/"+item.BImage)" width="200" height="200" class="img-responsive" />
+
+            </td>
+
+make changes for delete and display
+change item to Model
