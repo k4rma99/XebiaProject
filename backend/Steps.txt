@@ -122,66 +122,9 @@ add in startup.cs:
                options.UseSqlServer(Configuration.GetConnectionString("BookConStr")));
         }
 
-add mvc controller with entity framework 
-
-add link for BookController and Category Controller in _Layout.cshtml
+add api controller with entity framework 
 
 
-
-Img Upload Settings
-----------------------------------
-in models:
-add:
-public IFormFile PicFile { get; set; }
-
-
-controler:
- private readonly IWebHostEnvironment webHostEnvironment;
-        public BookController(BookStoreDBContext context, IWebHostEnvironment webHostEnvironment)
-        {
-            _context = context;
-            this.webHostEnvironment = webHostEnvironment;
-        }
-
- public async Task<IActionResult> Create([Bind("BId,BName,CId,AId,BIsbn,BPrice,BDescription,BPosition,BStatus,BQuantity,PicFile")] BookTable bookTable)
-        {
-            if (ModelState.IsValid)
-            {
-                string rPath = webHostEnvironment.WebRootPath;
-                string fName = Path.GetFileNameWithoutExtension(bookTable.PicFile.FileName);
-                string ext = Path.GetExtension(bookTable.PicFile.FileName);
-                bookTable.BImage = fName + ext;
-                string path = rPath + "/Images/Books/" + bookTable.BImage;
-                using (var fileStream = new FileStream(path, FileMode.Create))
-                {
-                    await bookTable.PicFile.CopyToAsync(fileStream);
-                }
-                _context.Add(bookTable);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-                //_context.Add(bookTable);
-                //await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
-
-            }
-
-in create.cshtml:
-<form asp-action="Create" enctype="multipart/form-data">
-<div class="form-group">
-                <label asp-for="PicFile" class="control-label"></label>
-                <input asp-for="PicFile" accept="image/*" />
-                <span asp-validation-for="PicFile" class="text-danger"></span>
-            </div>
- 
-
-index.cshtml:
-<td>
-                <img src="@("/Images/Books/"+item.BImage)" width="200" height="200" class="img-responsive" />
-
-            </td>
-
-make changes for delete and display
-change item to Model
 
 Jovel's edits
 =============
