@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Caleum"
+    },
+    {
+      "fName": "Jose",
+      "lName": "Dominic",
+      "email": "a@b.com",
+      "phone": 123456789,
+      "password": "323232323232",
+      "id": 2
+    }
+  ],
+  "books":[
+    {
+      "id":1,
+      "title":"Harry Potter",
+      "author":"JK Rowling",
+      "description":"Harry is a magician sdsdsdsdsdds",
+      "price":20
+    },
+    {
+      "id":2,
+      "title":"Van Helsing",
+      "author":"Hugh Jackman",
+      "description":"Van helsing is a vampire hunter sdsdsdsdsdds",
+      "price":30
+    }
+  ]
+}
