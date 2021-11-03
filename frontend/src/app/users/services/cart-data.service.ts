@@ -6,25 +6,33 @@ import { take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CartDataService {
-  
-   //Any to any component comm.
+
+  //Any to any component comm.
   //Step 1: create common data holder
-  private defaultCartItems:any[] = [
+  private defaultCartItems: any[] = [
     {
-      "id": 1,
-      "title": "Harry Potter",
-      "author": "JK Rowling",
-      "image":"http://placeimg.com/640/480/sports",
-      "description": "Harry is a magician sdsdsdsdsdds",
-      "price": 20
+      "id": 27,
+      "book": {
+        "id": 27,
+        "title": "Harry Potter",
+        "author": "JK Rowling",
+        "image": "http://placeimg.com/640/480/sports",
+        "description": "Harry is a magician sdsdsdsdsdds",
+        "price": 20
+      },
+      "qty":1
     },
     {
-      "id": 2,
-      "title": "Van Helsing",
-      "author": "Hugh Jackman",
-      "image":"http://placeimg.com/640/480/sports",
-      "description": "Van helsing is a vampire hunter sdsdsdsdsdds",
-      "price": 30
+      "id": 28,
+      "book": {
+        "id": 28,
+        "title": "Crime and Punishment",
+        "author": "Dostoyevsky",
+        "image": "http://placeimg.com/640/480/sports",
+        "description": "Ruskolnikov is the killer!",
+        "price": 15
+      },
+      "qty":2
     }
   ]
 
@@ -38,14 +46,26 @@ export class CartDataService {
 
   constructor() { }
 
-  updateCart(pdt:any) {
-    console.log(pdt);
+  updateCart(book: any) {
 
-    this.latestCartItemsList.pipe( take(1) ).subscribe( (cartItems) => {
-      console.log(cartItems);
-      const newCartItemsArr = [ ...cartItems , pdt];
+    this.latestCartItemsList.pipe(take(1)).subscribe((cartItems) => {
+      let cartItemsArr = cartItems as any[];
+      //check if book already exists in cart..if then update quantity
+      let itemIndex = cartItemsArr.findIndex( item => item.id ==book.id);
+      if (itemIndex!=-1){
+        cartItemsArr[itemIndex].qty += 1;
+      }
+      else{
+        let newCartItem = {
+          id:book.id,
+          book:book,
+          qty:1
+        }
+        cartItemsArr.push(newCartItem);
+      }
+      const newCartItemsArr = [...cartItemsArr];
       this.cartItemsList.next(newCartItemsArr);
-    } )
+    })
   }
 
 }

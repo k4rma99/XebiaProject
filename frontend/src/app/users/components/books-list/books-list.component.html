@@ -1,8 +1,14 @@
+<div class="container fixed-top" style="margin-top: 50px;">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search books by Title,Author or ISBN" [(ngModel)]="term">
+  </div>
+</div>
+
 <div class="container-fluid">
     <div class="col">
       <div class="row" >
   
-        <div class="col-12 col-md-6 col-lg-3 mb-3"   *ngFor="let book of bookList">
+        <div class="col-12 col-md-6 col-lg-3 mb-3"   *ngFor="let book of bookList | filter:term">
           <div class="card">
             <img class="card-img-top" src="{{book.image}}" 
             alt="Card image cap">

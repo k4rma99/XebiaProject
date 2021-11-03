@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartDataService } from 'src/app/users/services/cart-data.service';
-import { BookDataService } from 'src/app/users/services/book-data.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,6 +11,7 @@ import { BookDataService } from 'src/app/users/services/book-data.service';
 })
 export class HeaderComponent implements OnInit {
  
+  
   cartItemsCount:number = 0;
   
   constructor(private cartService:CartDataService) { }

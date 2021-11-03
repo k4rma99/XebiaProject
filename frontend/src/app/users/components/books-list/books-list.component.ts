@@ -10,6 +10,7 @@ import { BookDataService } from '../../services/book-data.service';
   ]
 })
 export class BooksListComponent implements OnInit {
+  term: string = '';
   bookList: any[] = [];
   bookSubscription:Subscription | undefined = undefined;
 
