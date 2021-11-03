@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 
 //feature module imports
 import { AuthModule } from './auth/auth.module';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
+    AuthModule
     
   ],
   providers: [],
