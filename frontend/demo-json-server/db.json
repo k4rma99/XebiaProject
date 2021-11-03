@@ -13,20 +13,77 @@
       "id": 2
     }
   ],
-  "books":[
+  "books": [
     {
-      "id":1,
-      "title":"Harry Potter",
-      "author":"JK Rowling",
-      "description":"Harry is a magician sdsdsdsdsdds",
-      "price":20
+      "id": 1,
+      "title": "Harry Potter",
+      "author": "JK Rowling",
+      "description": "Harry is a magician sdsdsdsdsdds",
+      "price": 20
     },
     {
-      "id":2,
-      "title":"Van Helsing",
-      "author":"Hugh Jackman",
-      "description":"Van helsing is a vampire hunter sdsdsdsdsdds",
-      "price":30
+      "id": 2,
+      "title": "Van Helsing",
+      "author": "Hugh Jackman",
+      "description": "Van helsing is a vampire hunter sdsdsdsdsdds",
+      "price": 30
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "book": {
+        "id": 1,
+        "title": "Harry Potter",
+        "author": "JK Rowling",
+        "description": "Harry is a magician sdsdsdsdsdds",
+        "price": 20
+      },
+      "qty": 4
+    },
+    {
+      "id": 2,
+      "book": {
+        "id": 200,
+        "title": "Holly Molly",
+        "author": "JK Johny",
+        "description": "Barry is a magician sdsdsdsdsdds",
+        "price": 30
+      },
+      "qty": 4
+    },
+    {
+      "book": {
+        "id": 1,
+        "title": "Harry Potter",
+        "author": "JK Rowling",
+        "description": "Harry is a magician sdsdsdsdsdds",
+        "price": 20
+      },
+      "qty": 0,
+      "id": 3
+    },
+    {
+      "book": {
+        "id": 1,
+        "title": "Harry Potter",
+        "author": "JK Rowling",
+        "description": "Harry is a magician sdsdsdsdsdds",
+        "price": 20
+      },
+      "qty": 0,
+      "id": 4
+    },
+    {
+      "book": {
+        "id": 2,
+        "title": "Van Helsing",
+        "author": "Hugh Jackman",
+        "description": "Van helsing is a vampire hunter sdsdsdsdsdds",
+        "price": 30
+      },
+      "qty": 0,
+      "id": 5
     }
   ]
 }

@@ -4,11 +4,25 @@ module.exports = function(){
     var faker = require("faker");
     var _ = require("lodash");
     return {
-        users: _.times(20,function(n){
+        books: _.times(20,function(n){
             return {
                 id:n,
-                name:faker.name.findName(),
-                avatar:faker.internet.avatar()
+                title:faker.commerce.productName(),
+                image:faker.image.sports(),
+                author:faker.name.findName(),
+                price:faker.commerce.price()
+            }
+        }),
+        cart:_.times(4,function(n){
+            return {
+                id:n,
+                book:{
+                    id:n*10,
+                    title:faker.commerce.productName(),
+                    image:faker.image.sports(),
+                    author:faker.name.findName(),
+                    price:faker.commerce.price()
+                }
             }
         })
     }

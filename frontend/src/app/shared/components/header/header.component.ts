@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CartDataService } from 'src/app/users/services/cart-data.service';
+import { BookDataService } from 'src/app/users/services/book-data.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +10,19 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+ 
+  cartItemsCount:number = 0;
+  
+  constructor(private cartService:CartDataService) { }
 
   ngOnInit(): void {
+ 
+    
+    this.cartService.latestCartItemsList.subscribe( (cartItems) => {
+      console.log(`Cart Items: ${cartItems}`);
+      this.cartItemsCount = cartItems.length;
+    } )
+ 
   }
 
 }

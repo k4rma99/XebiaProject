@@ -5,9 +5,10 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class BookDataService {
 
   private REST_API_URL:string = "http://localhost:3000/books";
+
   constructor(private Http:HttpClient) { }
 
   getBooks():any{
@@ -17,4 +18,7 @@ export class UserService {
       return res;
     } ));
   }
+    
 }
+  
+

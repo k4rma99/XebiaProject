@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UserService } from '../../services/user.service';
+import { CartDataService } from '../../services/cart-data.service';
+import { BookDataService } from '../../services/book-data.service';
 
 @Component({
   selector: 'app-books-list',
@@ -12,18 +13,18 @@ export class BooksListComponent implements OnInit {
   bookList: any[] = [];
   bookSubscription:Subscription | undefined = undefined;
 
-  constructor(private userService:UserService) { }
+  constructor(private bookService:BookDataService,private cartService:CartDataService) { }
 
   ngOnInit(): void {
-    this.bookSubscription = this.userService.getBooks().subscribe( (res:any) => {
-      console.log(`Res inside ts file:${res[0].name}`);
-      this.bookList = res;
+    this.bookSubscription = this.bookService.getBooks().subscribe( (res:any) => {
+      //console.log(`Res inside ts file:${res[0].name}`);
+      this.bookList = res as any[];
     });
     console.log(`userList = ${this.bookList}`);
   }
 
   handleAddToCart(book:any){
-
+    this.cartService.updateCart(book);
   }
 
 }
