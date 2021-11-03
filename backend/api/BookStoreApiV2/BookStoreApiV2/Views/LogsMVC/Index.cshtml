@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BookStoreApiV2.Models.Log>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lLogType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lUserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lDateAndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lLogType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lUserType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lDateAndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.uFName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.lId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.lId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.lId })
+        </td>
+    </tr>
+}
+
+</table>

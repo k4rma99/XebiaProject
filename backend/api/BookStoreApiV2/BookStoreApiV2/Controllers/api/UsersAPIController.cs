@@ -12,10 +12,12 @@ using BookStoreApiV2.Models;
 
 namespace BookStoreApiV2.Controllers
 {
+    
     public class UsersAPIController : ApiController
     {
         private BookStoreDBEntities db = new BookStoreDBEntities();
 
+        
         // GET: api/UsersAPI
         public IQueryable<User> GetUsers()
         {
@@ -79,6 +81,15 @@ namespace BookStoreApiV2.Controllers
                 return BadRequest(ModelState);
             }
 
+            LoginCredential obj = new LoginCredential()
+            {
+                uId = user.uId,
+                uRole = user.uRole,
+                uMailId = user.uMailId,
+                uPassword = user.uPassword
+            };
+
+            db.LoginCredentials.Add(obj);
             db.Users.Add(user);
             db.SaveChanges();
 

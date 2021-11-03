@@ -1,0 +1,82 @@
+﻿@model BookStoreApiV2.Models.UserAddress
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserAddress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.uAddressLineOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uAddressLineOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uAddressLineTwo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uAddressLineTwo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uLandMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uLandMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uPincode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uPincode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.uFName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

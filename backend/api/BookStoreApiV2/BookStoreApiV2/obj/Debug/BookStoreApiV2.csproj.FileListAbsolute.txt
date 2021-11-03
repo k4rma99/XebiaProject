@@ -82,7 +82,7 @@ C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\System.Web.WebPages.Razor.xml
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\Antlr3.Runtime.pdb
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\obj\Debug\BookStoreApiV2.csproj.AssemblyReference.cache
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\obj\Debug\BookStoreApiV2.csproj.CoreCompileInputs.cache
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\obj\Debug\BookStoreApiV2.dll
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\obj\Debug\BookStoreApiV2.pdb
+C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\obj\Debug\BookStoreApiV2.csproj.AssemblyReference.cache

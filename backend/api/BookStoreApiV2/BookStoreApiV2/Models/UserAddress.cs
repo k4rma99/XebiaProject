@@ -11,10 +11,12 @@ namespace BookStoreApiV2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class UserAddress
     {
         public int id { get; set; }
+        [ForeignKey("User")]
         public Nullable<int> uId { get; set; }
         public string uAddressLineOne { get; set; }
         public string uAddressLineTwo { get; set; }

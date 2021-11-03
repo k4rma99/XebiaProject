@@ -171,8 +171,16 @@
     <Compile Include="Controllers\api\LogsAPIController.cs" />
     <Compile Include="Controllers\api\OrderDetailsAPIController.cs" />
     <Compile Include="Controllers\api\OrdersAPIController.cs" />
-    <Compile Include="Controllers\UsersAPIController.cs" />
+    <Compile Include="Controllers\api\UsersAPIController.cs" />
     <Compile Include="Controllers\api\ValuesController.cs" />
+    <Compile Include="Controllers\mvc\AuthorsMVCController.cs" />
+    <Compile Include="Controllers\mvc\BooksMVCController.cs" />
+    <Compile Include="Controllers\mvc\CategoriesMVCController.cs" />
+    <Compile Include="Controllers\mvc\CouponsMVCController.cs" />
+    <Compile Include="Controllers\mvc\LogsMVCController.cs" />
+    <Compile Include="Controllers\mvc\OrderDetailsMVCController.cs" />
+    <Compile Include="Controllers\mvc\OrdersMVCController.cs" />
+    <Compile Include="Controllers\mvc\UserAddressesMVCController.cs" />
     <Compile Include="Controllers\mvc\UsersMVCController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,6 +203,7 @@
     <Compile Include="Models\Log.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginCredential.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -299,6 +308,46 @@
     <Content Include="Views\UsersMVC\Details.cshtml" />
     <Content Include="Views\UsersMVC\Edit.cshtml" />
     <Content Include="Views\UsersMVC\Index.cshtml" />
+    <Content Include="Views\UserAddressesMVC\Create.cshtml" />
+    <Content Include="Views\UserAddressesMVC\Delete.cshtml" />
+    <Content Include="Views\UserAddressesMVC\Details.cshtml" />
+    <Content Include="Views\UserAddressesMVC\Edit.cshtml" />
+    <Content Include="Views\UserAddressesMVC\Index.cshtml" />
+    <Content Include="Views\CategoriesMVC\Create.cshtml" />
+    <Content Include="Views\CategoriesMVC\Delete.cshtml" />
+    <Content Include="Views\CategoriesMVC\Details.cshtml" />
+    <Content Include="Views\CategoriesMVC\Edit.cshtml" />
+    <Content Include="Views\CategoriesMVC\Index.cshtml" />
+    <Content Include="Views\AuthorsMVC\Create.cshtml" />
+    <Content Include="Views\AuthorsMVC\Delete.cshtml" />
+    <Content Include="Views\AuthorsMVC\Details.cshtml" />
+    <Content Include="Views\AuthorsMVC\Edit.cshtml" />
+    <Content Include="Views\AuthorsMVC\Index.cshtml" />
+    <Content Include="Views\CouponsMVC\Create.cshtml" />
+    <Content Include="Views\CouponsMVC\Delete.cshtml" />
+    <Content Include="Views\CouponsMVC\Details.cshtml" />
+    <Content Include="Views\CouponsMVC\Edit.cshtml" />
+    <Content Include="Views\CouponsMVC\Index.cshtml" />
+    <Content Include="Views\LogsMVC\Create.cshtml" />
+    <Content Include="Views\LogsMVC\Delete.cshtml" />
+    <Content Include="Views\LogsMVC\Details.cshtml" />
+    <Content Include="Views\LogsMVC\Edit.cshtml" />
+    <Content Include="Views\LogsMVC\Index.cshtml" />
+    <Content Include="Views\OrdersMVC\Create.cshtml" />
+    <Content Include="Views\OrdersMVC\Delete.cshtml" />
+    <Content Include="Views\OrdersMVC\Details.cshtml" />
+    <Content Include="Views\OrdersMVC\Edit.cshtml" />
+    <Content Include="Views\OrdersMVC\Index.cshtml" />
+    <Content Include="Views\OrderDetails\Create.cshtml" />
+    <Content Include="Views\OrderDetails\Delete.cshtml" />
+    <Content Include="Views\OrderDetails\Details.cshtml" />
+    <Content Include="Views\OrderDetails\Edit.cshtml" />
+    <Content Include="Views\OrderDetails\Index.cshtml" />
+    <Content Include="Views\Books\Create.cshtml" />
+    <Content Include="Views\Books\Delete.cshtml" />
+    <Content Include="Views\Books\Details.cshtml" />
+    <Content Include="Views\Books\Edit.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

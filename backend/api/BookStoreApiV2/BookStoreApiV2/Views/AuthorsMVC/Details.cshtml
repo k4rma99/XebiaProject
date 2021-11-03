@@ -1,0 +1,42 @@
+﻿@model BookStoreApiV2.Models.Author
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aFName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aLName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aLName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aCountry)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.aId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

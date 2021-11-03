@@ -1,0 +1,42 @@
+﻿@model BookStoreApiV2.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.orDateAndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orDateAndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon.coCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coupon.coCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.uFName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.oId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

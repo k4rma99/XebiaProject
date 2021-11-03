@@ -1,0 +1,50 @@
+﻿@model BookStoreApiV2.Models.Coupon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Coupon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.coCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coDiscount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coDiscount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.coId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

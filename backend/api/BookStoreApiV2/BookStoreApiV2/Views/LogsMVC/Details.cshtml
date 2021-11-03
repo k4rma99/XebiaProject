@@ -1,0 +1,50 @@
+﻿@model BookStoreApiV2.Models.Log
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Log</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lLogType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lLogType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lUserType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lUserType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lDateAndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lDateAndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.uFName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.lId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

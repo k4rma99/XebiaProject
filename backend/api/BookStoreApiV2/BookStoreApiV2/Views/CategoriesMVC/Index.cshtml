@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BookStoreApiV2.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cPosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cCreatedAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cPosition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cCreatedAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cId })
+        </td>
+    </tr>
+}
+
+</table>

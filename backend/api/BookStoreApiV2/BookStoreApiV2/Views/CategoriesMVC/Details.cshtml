@@ -1,0 +1,66 @@
+﻿@model BookStoreApiV2.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cCreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cCreatedAt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BookStoreApiV2.Models.UserAddress>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.uAddressLineOne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uAddressLineTwo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uLandMark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uPincode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.uAddressLineOne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uAddressLineTwo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uLandMark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uPincode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.uFName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

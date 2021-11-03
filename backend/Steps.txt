@@ -192,3 +192,8 @@ Jovel's edits
 -> added a dummy data to user table
 -> tried running api, but there's an issue while fetching data. I believe it is because we are using foreign keys.
    trying to find my way out of it.
+-> added some extra functions related to converting xml to json and serialisation of data in webapiconfig file.
+   The data is fetched successfully.
+-> There was an issue when data was added in foreign key table (useraddresses). the issue was with lazy loading. Disabled it in context file,
+   now data is working fine.
+-> Need to add a cart and wishlist table

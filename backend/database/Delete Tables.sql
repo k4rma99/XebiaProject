@@ -1,4 +1,4 @@
--- delete Tables --
+-- delete Tables and data --
 use BookStoreDB
 
 drop table Logs
@@ -11,3 +11,6 @@ drop table Authors
 drop table UserAddresses
 drop table LoginCredentials
 drop table Users
+
+delete from UserAddresses
+delete from Users

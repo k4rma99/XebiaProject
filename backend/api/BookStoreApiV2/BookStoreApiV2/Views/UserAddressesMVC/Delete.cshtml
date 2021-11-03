@@ -1,0 +1,88 @@
+﻿@model BookStoreApiV2.Models.UserAddress
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UserAddress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.uAddressLineOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uAddressLineOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uAddressLineTwo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uAddressLineTwo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uLandMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uLandMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uPincode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uPincode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.uFName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

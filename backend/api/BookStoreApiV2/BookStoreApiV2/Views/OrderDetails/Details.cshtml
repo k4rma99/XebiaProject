@@ -1,0 +1,98 @@
+﻿@model BookStoreApiV2.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oTotalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oTotalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oShippingAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oShippingAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oBillingAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oBillingAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oPaymentMode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oPaymentMode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.bName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.bName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.oId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.oId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.uFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.uFName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ordrId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
