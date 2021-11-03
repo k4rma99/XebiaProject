@@ -9,6 +9,7 @@ import {  map} from 'rxjs/operators';
 export class AuthService {
 
   private REST_API_URL = 'https://reqres.in/api';
+  private TEST_JSON_SERVER_URL = 'http://localhost:3000/users'
 
 
   constructor(private http: HttpClient) { }
@@ -25,7 +26,7 @@ export class AuthService {
   }
 
   signup(userData:any){
-    return this.http.post(this.REST_API_URL+'/register', userData,{observe:'response'})
+    return this.http.post(this.TEST_JSON_SERVER_URL, userData,{observe:'response'})
     .pipe(map((res: any) => { 
      
       return res;

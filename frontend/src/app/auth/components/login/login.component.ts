@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   isFilled: boolean = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('authToken', res.token);
         sessionStorage.setItem('userRole', res.role);
         alert("Login Success");
+        this.router.navigate(['users']);
 
       },
       err => {
