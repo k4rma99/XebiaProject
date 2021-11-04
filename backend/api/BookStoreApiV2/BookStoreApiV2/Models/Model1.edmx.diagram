@@ -5,17 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="423d7daed45b4e4a97a6d73bc2917cb1" Name="Diagram1">
-        <EntityTypeShape EntityType="BookStoreDBModel.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Author" Width="1.5" PointX="1.5" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Book" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Category" Width="1.5" PointX="1.5" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Coupon" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Log" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.Author" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.Book" Width="1.5" PointX="1" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.Category" Width="1.5" PointX="1" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.Coupon" Width="1.5" PointX="3.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.Log" Width="1.5" PointX="0.875" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.OrderDetail" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Order" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.UserAddress" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.User" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.LoginCredential" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.Order" Width="1.5" PointX="5.375" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.UserAddress" Width="1.5" PointX="6.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.User" Width="1.5" PointX="3.375" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDBModel.LoginCredential" Width="1.5" PointX="7.375" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="BookStoreDBModel.FK__Books__aId__282DF8C2" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__Books__cId__2739D489" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__OrderDetail__bId__3493CFA7" ManuallyRouted="false" />
