@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,15 +47,26 @@ namespace BookStoreApiV2.Controllers.mvc
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cId,cName,cDescription,cImage,cStatus,cPosition,cCreatedAt")] Category category)
+        public ActionResult Create([Bind(Include = "cId,cName,cDescription,cImage,cStatus,cPosition,cCreatedAt,ImageFile")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                string extension= Path.GetExtension(category.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff")+extension;
+                //cImage contains the path for the image
+                category.cImage = "~/Images/Category/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/Category/"),fileName);
+                category.ImageFile.SaveAs(fileName);
+                using(BookStoreDBEntities db = new BookStoreDBEntities())
+                {
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
-            }
 
+            }
+            ModelState.Clear();
             return View(category);
         }
 
@@ -78,14 +90,26 @@ namespace BookStoreApiV2.Controllers.mvc
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cId,cName,cDescription,cImage,cStatus,cPosition,cCreatedAt")] Category category)
+        public ActionResult Edit([Bind(Include = "cId,cName,cDescription,cImage,cStatus,cPosition,cCreatedAt,ImageFile")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
+                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                string extension = Path.GetExtension(category.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                //cImage contains the path for the image
+                category.cImage = "~/Images/Category/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/Category/"), fileName);
+                category.ImageFile.SaveAs(fileName);
+                using (BookStoreDBEntities db = new BookStoreDBEntities())
+                {
+                    db.Entry(category).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
+
             }
+            ModelState.Clear();
             return View(category);
         }
 
