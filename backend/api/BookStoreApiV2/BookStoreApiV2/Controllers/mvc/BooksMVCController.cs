@@ -63,7 +63,7 @@ namespace BookStoreApiV2.Controllers.mvc
                 string fileName = Path.GetFileNameWithoutExtension(book.ImageFile.FileName);
                 string extension = Path.GetExtension(book.ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                //cImage contains the path for the image
+                //bImage contains the path for the image
                 book.bImage = "~/Images/Book/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Images/Book/"), fileName);
                 book.ImageFile.SaveAs(fileName);
@@ -112,7 +112,7 @@ namespace BookStoreApiV2.Controllers.mvc
                 string fileName = Path.GetFileNameWithoutExtension(book.ImageFile.FileName);
                 string extension = Path.GetExtension(book.ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                //cImage contains the path for the image
+                //bImage contains the path for the image
                 book.bImage = "~/Images/Book/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Images/Book/"), fileName);
                 book.ImageFile.SaveAs(fileName);
