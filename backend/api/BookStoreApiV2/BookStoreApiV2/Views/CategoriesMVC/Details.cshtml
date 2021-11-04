@@ -31,7 +31,9 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.cImage)
+            
+            @*@Html.DisplayFor(model => model.cImage)*@
+            <img src="@Url.Content(Model.cImage)" width="200" height="200" class="img-responsive" />
         </dd>
 
         <dt>

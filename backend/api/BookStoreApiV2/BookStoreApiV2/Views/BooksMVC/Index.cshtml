@@ -1,0 +1,88 @@
+﻿@model IEnumerable<BookStoreApiV2.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bPosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author.aFName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.cName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bPosition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bStatus)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.bImage)*@
+            <img src="@Url.Content(item.bImage)" width="200" height="200" class="img-responsive" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.aFName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.cName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.bId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.bId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.bId })
+        </td>
+    </tr>
+}
+
+</table>

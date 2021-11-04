@@ -41,7 +41,8 @@
             @Html.DisplayFor(modelItem => item.cDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cImage)
+            @*@Html.DisplayFor(modelItem => item.cImage)*@
+            <img src="@Url.Content(item.cImage)" width="200" height="200" class="img-responsive" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.cStatus)
