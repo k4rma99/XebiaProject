@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Injectable({
@@ -36,6 +36,9 @@ export class CartDataService {
     }
   ]
 
+  totalPrice: Subject<number> = new Subject<number>();
+  totalQuantity: Subject<number> = new Subject<number>();
+
   //to make above data subscribable we need to create an rxjs observable
   //Step 2: Create behaviour subject with default cart items
   cartItemsList = new BehaviorSubject(this.defaultCartItems);
@@ -50,7 +53,7 @@ export class CartDataService {
 
     this.latestCartItemsList.pipe(take(1)).subscribe((cartItems) => {
       let cartItemsArr = cartItems as any[];
-      //check if book already exists in cart..if then update quantity
+      //check if book already exists in cart..if then update quantity..else add new item
       let itemIndex = cartItemsArr.findIndex( item => item.id ==book.id);
       if (itemIndex!=-1){
         cartItemsArr[itemIndex].qty += 1;
@@ -65,7 +68,42 @@ export class CartDataService {
       }
       const newCartItemsArr = [...cartItemsArr];
       this.cartItemsList.next(newCartItemsArr);
+      this.calculateTotalPrice();
     })
   }
+
+  removeItem(itemId:number){
+    this.latestCartItemsList.pipe(take(1)).subscribe((cartItems) => {
+      let cartItemsArr = cartItems as any[];
+      //check if item  exists in cart..if then remove item using splice..else do nothing
+      let itemIndex = cartItemsArr.findIndex( item => item.id ==itemId);
+      if (itemIndex!=-1){
+        cartItemsArr.splice(itemIndex, 1);
+        const newCartItemsArr = [...cartItemsArr];
+        this.cartItemsList.next(newCartItemsArr);
+      }
+     
+      this.calculateTotalPrice();
+    })
+  }
+
+  calculateTotalPrice() {
+    this.latestCartItemsList.pipe(take(1)).subscribe((cartItems) => {
+      let cartItemsArr = cartItems as any[];
+      let totalPriceValue: number = 0;
+      let totalQuantityValue: number = 0;
+  
+      for(let currentCartItem of cartItemsArr){
+        totalPriceValue += currentCartItem.qty * currentCartItem["book"].price;
+        totalQuantityValue += currentCartItem.qty;
+      }
+  
+      //console.log(`Total price: ${totalPriceValue}, Total quantity: ${totalQuantityValue}`);
+      
+      this.totalPrice.next(totalPriceValue);
+      this.totalQuantity.next(totalQuantityValue);    
+    })
+  }
+
 
 }

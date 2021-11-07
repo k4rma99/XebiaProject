@@ -21,7 +21,7 @@ export class BooksListComponent implements OnInit {
       //console.log(`Res inside ts file:${res[0].name}`);
       this.bookList = res as any[];
     });
-    console.log(`userList = ${this.bookList}`);
+    console.log(`bookList = ${this.bookList}`);
   }
 
   handleAddToCart(book:any){

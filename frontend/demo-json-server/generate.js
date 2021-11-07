@@ -21,9 +21,21 @@ module.exports = function(){
                     title:faker.commerce.productName(),
                     image:faker.image.sports(),
                     author:faker.name.findName(),
-                    price:faker.commerce.price()
+                    price:faker.commerce.price(),
+                   
                 }
             }
+        }),
+        orders:[],
+        address:_.times(2,function(n){
+            return {
+                id:n,
+                name:faker.name.firstName(),
+                city:faker.commerce.productName(),
+                phone:faker.commerce.productAdjective(),
+                pincode:faker.commerce.price()
+                }
+            
         })
     }
 }

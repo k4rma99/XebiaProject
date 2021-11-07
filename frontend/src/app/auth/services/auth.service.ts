@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import {  map} from 'rxjs/operators';
 
 
@@ -10,9 +12,15 @@ export class AuthService {
 
   private REST_API_URL = 'https://reqres.in/api';
   private TEST_JSON_SERVER_URL = 'http://localhost:3000/users'
+  public loggedIn:Subject<boolean> = new Subject<boolean>();
+  
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { 
+    if(sessionStorage.getItem('authToken')){
+      this.loggedIn.next(true);
+    }
+    //console.log(`Inside authservice`);
+  }
 
   login(userData: any) {
     //console.log("Inside Authservice")
@@ -31,6 +39,14 @@ export class AuthService {
      
       return res;
     }));
+  }
+
+  logout(){
+    sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('userRole');
+    this.loggedIn.next(false);
+    this.router.navigate(['login']);
+    alert('You are now logged out!');
   }
 
   isAuth(): boolean {

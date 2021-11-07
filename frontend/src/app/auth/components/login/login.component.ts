@@ -31,8 +31,10 @@ export class LoginComponent implements OnInit {
     this.isFilled = true;
     this.authService.login(this.loginForm.value).subscribe(
       res => {
-        sessionStorage.setItem('authToken', res.token);
-        sessionStorage.setItem('userRole', res.role);
+        console.log(res);
+        sessionStorage.setItem('authToken', res.body.token);
+        sessionStorage.setItem('userRole', res.body.role);
+        this.authService.loggedIn.next(true);
         alert("Login Success");
         this.router.navigate(['users']);
 

@@ -10,13 +10,27 @@ import { BookDataService } from '../../services/book-data.service';
 })
 export class CartComponent implements OnInit {
   cartItemList: any[] = [];
+  totalPrice:number = 0;
 
   constructor(private cartService:CartDataService) { }
 
   ngOnInit(): void {
     this.cartService.latestCartItemsList.subscribe( (cartItems) => {
       this.cartItemList = cartItems;
-    } )
+    } );
+    this.cartService.totalPrice.subscribe(
+      data => this.totalPrice = data
+    );
+    this.cartService.calculateTotalPrice();
+  }
+
+  handleRemoveItem(itemId:number){
+    //console.log(`inside handleRemove()`)
+    this.cartService.removeItem(itemId);
+  }
+
+  handleQtyChange(){
+    this.cartService.calculateTotalPrice();
   }
 
 }

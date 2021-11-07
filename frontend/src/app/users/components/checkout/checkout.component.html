@@ -1,0 +1,35 @@
+<h2>Order Details</h2>
+<div class="row" *ngFor="let item of cartItemList">
+    <div class="col-12 col-sm-12 col-md-2">
+      {{item.book.title}}
+    </div>
+    <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+      <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+
+        <h6><strong>{{item.book.price | currency: 'INR'}}</strong></h6>
+      </div>
+      <div class="col-4 col-sm-4 col-md-4">
+        <div class="quantity">
+           Quantity: {{item.qty}}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-4 col-sm-4 col-md-4">
+        <h6> Have a Coupon Code?</h6>
+         <input placeholder="CODE HERE" type="text" [(ngModel)]="couponCode" >
+        <h6> Total Cost: <b>{{totalPrice | currency: 'INR'}}</b></h6>
+      </div>
+    
+  </div>
+  
+<select  [(ngModel)]="chosenAddress" class="form-select" id="sAddress" aria-label="Default select example">
+    <option selected>Choose shipping address</option>
+    <option *ngFor="let address of addressList" value="{{address | json}}">
+      {{address.id+","+address.name+","+address.city+","+address.phone+", "+address.pincode}}
+    </option>
+    
+</select>
+<button (click)="handlePlaceOrder(couponCode)" class="btn btn-primary">Place Order</button>
