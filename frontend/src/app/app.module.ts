@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 
+import { AdminModule } from './admin/admin.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    
+    AdminModule //To test design
   ],
   providers: [],
   bootstrap: [AppComponent]
