@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BookStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="C__EFMigrationsHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-    </Key>
-    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
   <EntityType Name="Author">
     <Key>
       <PropertyRef Name="aId" />
@@ -122,7 +115,7 @@
       <PropertyRef Name="uId" />
     </Key>
     <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -255,7 +248,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="BookStoreDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
     <EntitySet Name="Authors" EntityType="Self.Author" />
     <EntitySet Name="Books" EntityType="Self.Book" />
     <EntitySet Name="Categories" EntityType="Self.Category" />

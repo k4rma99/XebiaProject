@@ -182,3 +182,7 @@ Jovel's edits
 -> There was an issue when data was added in foreign key table (useraddresses). the issue was with lazy loading. Disabled it in context file,
    now data is working fine.
 -> Need to add a cart and wishlist table
+9th Nov
+-------
+-> added some custom calls in books api
+-> route template was change in WEBAPICONFIG File. now we need to call the functions as api/controller/action

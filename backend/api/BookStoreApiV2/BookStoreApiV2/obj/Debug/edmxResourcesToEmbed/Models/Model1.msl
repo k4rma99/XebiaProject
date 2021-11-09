@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BookStoreDBModelStoreContainer" CdmEntityContainer="BookStoreDBEntities">
-    <EntitySetMapping Name="C__EFMigrationsHistory">
-      <EntityTypeMapping TypeName="BookStoreDBModel.C__EFMigrationsHistory">
-        <MappingFragment StoreEntitySet="__EFMigrationsHistory">
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Authors">
       <EntityTypeMapping TypeName="BookStoreDBModel.Author">
         <MappingFragment StoreEntitySet="Authors">

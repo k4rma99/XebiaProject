@@ -7,12 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookStoreApiV2.Models;
 
 namespace BookStoreApiV2.Controllers
 {
-    
+    [EnableCors(origins:"*", headers:"*",methods:"*")]
     public class UsersAPIController : ApiController
     {
         private BookStoreDBEntities db = new BookStoreDBEntities();
@@ -81,15 +82,15 @@ namespace BookStoreApiV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            LoginCredential obj = new LoginCredential()
-            {
-                uId = user.uId,
-                uRole = user.uRole,
-                uMailId = user.uMailId,
-                uPassword = user.uPassword
-            };
+            //LoginCredential obj = new LoginCredential()
+            //{
+            //    uId = user.uId,
+            //    uRole = user.uRole,
+            //    uMailId = user.uMailId,
+            //    uPassword = user.uPassword
+            //};
 
-            db.LoginCredentials.Add(obj);
+            //db.LoginCredentials.Add(obj);
             db.Users.Add(user);
             db.SaveChanges();
 
@@ -110,6 +111,21 @@ namespace BookStoreApiV2.Controllers
             db.SaveChanges();
 
             return Ok(user);
+        }
+
+        [HttpPost]
+        [ResponseType(typeof(LoginResp))]
+        public IHttpActionResult LoginUser(Login login)
+        {
+            //Console.WriteLine(login.ToString());
+            //Console.ReadKey();
+            User user = db.Users.SingleOrDefault(u => u.uMailId == login.uMailId && u.uPassword == login.uPassword);
+            LoginResp resp = new LoginResp()
+            {
+                token = "aahghsjhk",
+                role = user.uRole
+            };
+            return Ok(resp);
         }
 
         protected override void Dispose(bool disposing)

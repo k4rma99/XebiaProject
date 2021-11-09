@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BookStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="__EFMigrationsHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-    </Key>
-    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Authors">
     <Key>
       <PropertyRef Name="aId" />
@@ -108,7 +101,7 @@
       <PropertyRef Name="uId" />
     </Key>
     <Property Name="uId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="uFName" Type="nvarchar" MaxLength="50" />
+    <Property Name="uFName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="uLName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="uPhone" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="uMailId" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -130,7 +123,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
     <Property Name="uId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="uRole" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Books__aId__282DF8C2">
+  <Association Name="FK__Books__aId__4AB81AF0">
     <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
     <End Role="Books" Type="Self.Books" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +135,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Books__cId__2739D489">
+  <Association Name="FK__Books__cId__49C3F6B7">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
     <End Role="Books" Type="Self.Books" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +147,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Logs__uId__37703C52">
+  <Association Name="FK__Logs__uId__59FA5E80">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +159,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDetail__bId__3493CFA7">
+  <Association Name="FK__OrderDetail__bId__571DF1D5">
     <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
     <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,7 +171,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDetail__oId__32AB8735">
+  <Association Name="FK__OrderDetail__oId__5535A963">
     <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
     <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -190,7 +183,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDetail__uId__339FAB6E">
+  <Association Name="FK__OrderDetail__uId__5629CD9C">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,7 +195,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__orCoupon__2FCF1A8A">
+  <Association Name="FK__Orders__orCoupon__52593CB8">
     <End Role="Coupons" Type="Self.Coupons" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -214,7 +207,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__uId__2EDAF651">
+  <Association Name="FK__Orders__uId__5165187F">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -226,7 +219,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAddress__uId__1CBC4616">
+  <Association Name="FK__UserAddress__uId__3F466844">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="UserAddresses" Type="Self.UserAddresses" Multiplicity="*" />
     <ReferentialConstraint>
@@ -239,7 +232,6 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="BookStoreDBModelStoreContainer">
-    <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -257,39 +249,39 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
     [LoginCredentials].[uRole] AS [uRole]
     FROM [dbo].[LoginCredentials] AS [LoginCredentials]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Books__aId__282DF8C2" Association="Self.FK__Books__aId__282DF8C2">
+    <AssociationSet Name="FK__Books__aId__4AB81AF0" Association="Self.FK__Books__aId__4AB81AF0">
       <End Role="Authors" EntitySet="Authors" />
       <End Role="Books" EntitySet="Books" />
     </AssociationSet>
-    <AssociationSet Name="FK__Books__cId__2739D489" Association="Self.FK__Books__cId__2739D489">
+    <AssociationSet Name="FK__Books__cId__49C3F6B7" Association="Self.FK__Books__cId__49C3F6B7">
       <End Role="Category" EntitySet="Category" />
       <End Role="Books" EntitySet="Books" />
     </AssociationSet>
-    <AssociationSet Name="FK__Logs__uId__37703C52" Association="Self.FK__Logs__uId__37703C52">
+    <AssociationSet Name="FK__Logs__uId__59FA5E80" Association="Self.FK__Logs__uId__59FA5E80">
       <End Role="Users" EntitySet="Users" />
       <End Role="Logs" EntitySet="Logs" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDetail__bId__3493CFA7" Association="Self.FK__OrderDetail__bId__3493CFA7">
+    <AssociationSet Name="FK__OrderDetail__bId__571DF1D5" Association="Self.FK__OrderDetail__bId__571DF1D5">
       <End Role="Books" EntitySet="Books" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDetail__oId__32AB8735" Association="Self.FK__OrderDetail__oId__32AB8735">
+    <AssociationSet Name="FK__OrderDetail__oId__5535A963" Association="Self.FK__OrderDetail__oId__5535A963">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDetail__uId__339FAB6E" Association="Self.FK__OrderDetail__uId__339FAB6E">
+    <AssociationSet Name="FK__OrderDetail__uId__5629CD9C" Association="Self.FK__OrderDetail__uId__5629CD9C">
       <End Role="Users" EntitySet="Users" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__orCoupon__2FCF1A8A" Association="Self.FK__Orders__orCoupon__2FCF1A8A">
+    <AssociationSet Name="FK__Orders__orCoupon__52593CB8" Association="Self.FK__Orders__orCoupon__52593CB8">
       <End Role="Coupons" EntitySet="Coupons" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__uId__2EDAF651" Association="Self.FK__Orders__uId__2EDAF651">
+    <AssociationSet Name="FK__Orders__uId__5165187F" Association="Self.FK__Orders__uId__5165187F">
       <End Role="Users" EntitySet="Users" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAddress__uId__1CBC4616" Association="Self.FK__UserAddress__uId__1CBC4616">
+    <AssociationSet Name="FK__UserAddress__uId__3F466844" Association="Self.FK__UserAddress__uId__3F466844">
       <End Role="Users" EntitySet="Users" />
       <End Role="UserAddresses" EntitySet="UserAddresses" />
     </AssociationSet>

@@ -13,6 +13,8 @@ uPassword nvarchar(50) not null  check (len([uPassword])>(5)),
 uAccountStatus nvarchar(10) not null check (uAccountStatus in ('activated','deactivated')),
 uRole nvarchar(10) not null check (uRole in('user','admin')))
 
+select * from Users
+
 create view LoginCredentials as
 select uMailId,uPassword, uId, uRole
 from Users
@@ -58,6 +60,8 @@ bPosition int not null,
 bStatus nvarchar(10) not null check (bStatus in ('activated','deactivated')),
 bImage nvarchar(50) not null,
 bQuantity int not null)
+
+select * from Books
 
 create table Coupons 
 (coId int primary key,

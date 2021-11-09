@@ -64,8 +64,8 @@ namespace BookStoreApiV2.Controllers.mvc
                 string extension = Path.GetExtension(book.ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 //bImage contains the path for the image
-                book.bImage = "~/Images/Book/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Images/Book/"), fileName);
+                book.bImage = "/Images/Book/" + fileName;
+                fileName = Path.Combine(Server.MapPath("/Images/Book/"), fileName);
                 book.ImageFile.SaveAs(fileName);
                 using (BookStoreDBEntities db = new BookStoreDBEntities())
                 {
