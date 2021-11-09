@@ -168,6 +168,8 @@ change item to Model
 CHANGES IN CATEGORY AND BOOK MVC CONTROLLERS AND THEIR VIEWS
 
 
+Created two image api controllers for uploading images in category and book
+
 Jovel's edits
 =============
 -> Changed the schema
