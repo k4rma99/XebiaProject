@@ -29,6 +29,7 @@
           <Property Name="bStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="bImage" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="bQuantity" Type="int" Nullable="false" />
+          <Property Name="bCreatedAt" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -100,19 +101,30 @@
           <Property Name="uState" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="uCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="uPincode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fName" Type="nvarchar" MaxLength="20" />
+          <Property Name="lName" Type="nvarchar" MaxLength="20" />
+          <Property Name="uPhone" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="uId" />
           </Key>
           <Property Name="uId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="uFName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="uFName" Type="nvarchar" MaxLength="50" />
           <Property Name="uLName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="uPhone" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="uMailId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="uPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="uAccountStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="uRole" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="wid" />
+          </Key>
+          <Property Name="wid" Type="int" Nullable="false" />
+          <Property Name="uId" Type="int" />
+          <Property Name="bId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -128,7 +140,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
           <Property Name="uId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="uRole" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Books__aId__4AB81AF0">
+        <Association Name="FK__Books__aId__282DF8C2">
           <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +152,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Books__cId__49C3F6B7">
+        <Association Name="FK__Books__cId__2739D489">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +164,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Logs__uId__59FA5E80">
+        <Association Name="FK__Logs__uId__37703C52">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +176,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDetail__bId__571DF1D5">
+        <Association Name="FK__OrderDetail__bId__3493CFA7">
           <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,7 +188,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDetail__oId__5535A963">
+        <Association Name="FK__OrderDetail__oId__32AB8735">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -188,7 +200,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDetail__uId__5629CD9C">
+        <Association Name="FK__OrderDetail__uId__339FAB6E">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -200,7 +212,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__orCoupon__52593CB8">
+        <Association Name="FK__Orders__orCoupon__2FCF1A8A">
           <End Role="Coupons" Type="Self.Coupons" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,7 +224,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__uId__5165187F">
+        <Association Name="FK__Orders__uId__2EDAF651">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,7 +236,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAddress__uId__3F466844">
+        <Association Name="FK__UserAddress__uId__1CBC4616">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="UserAddresses" Type="Self.UserAddresses" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,6 +244,30 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
               <PropertyRef Name="uId" />
             </Principal>
             <Dependent Role="UserAddresses">
+              <PropertyRef Name="uId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wishlist__bId__45BE5BA9">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="bId" />
+            </Principal>
+            <Dependent Role="Wishlist">
+              <PropertyRef Name="bId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wishlist__uId__44CA3770">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uId" />
+            </Principal>
+            <Dependent Role="Wishlist">
               <PropertyRef Name="uId" />
             </Dependent>
           </ReferentialConstraint>
@@ -246,6 +282,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAddresses" EntityType="Self.UserAddresses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginCredentials" EntityType="Self.LoginCredentials" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [LoginCredentials].[uMailId] AS [uMailId], 
@@ -254,41 +291,49 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
     [LoginCredentials].[uRole] AS [uRole]
     FROM [dbo].[LoginCredentials] AS [LoginCredentials]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Books__aId__4AB81AF0" Association="Self.FK__Books__aId__4AB81AF0">
+          <AssociationSet Name="FK__Books__aId__282DF8C2" Association="Self.FK__Books__aId__282DF8C2">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="Books" EntitySet="Books" />
           </AssociationSet>
-          <AssociationSet Name="FK__Books__cId__49C3F6B7" Association="Self.FK__Books__cId__49C3F6B7">
+          <AssociationSet Name="FK__Books__cId__2739D489" Association="Self.FK__Books__cId__2739D489">
             <End Role="Category" EntitySet="Category" />
             <End Role="Books" EntitySet="Books" />
           </AssociationSet>
-          <AssociationSet Name="FK__Logs__uId__59FA5E80" Association="Self.FK__Logs__uId__59FA5E80">
+          <AssociationSet Name="FK__Logs__uId__37703C52" Association="Self.FK__Logs__uId__37703C52">
             <End Role="Users" EntitySet="Users" />
             <End Role="Logs" EntitySet="Logs" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDetail__bId__571DF1D5" Association="Self.FK__OrderDetail__bId__571DF1D5">
+          <AssociationSet Name="FK__OrderDetail__bId__3493CFA7" Association="Self.FK__OrderDetail__bId__3493CFA7">
             <End Role="Books" EntitySet="Books" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDetail__oId__5535A963" Association="Self.FK__OrderDetail__oId__5535A963">
+          <AssociationSet Name="FK__OrderDetail__oId__32AB8735" Association="Self.FK__OrderDetail__oId__32AB8735">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDetail__uId__5629CD9C" Association="Self.FK__OrderDetail__uId__5629CD9C">
+          <AssociationSet Name="FK__OrderDetail__uId__339FAB6E" Association="Self.FK__OrderDetail__uId__339FAB6E">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__orCoupon__52593CB8" Association="Self.FK__Orders__orCoupon__52593CB8">
+          <AssociationSet Name="FK__Orders__orCoupon__2FCF1A8A" Association="Self.FK__Orders__orCoupon__2FCF1A8A">
             <End Role="Coupons" EntitySet="Coupons" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__uId__5165187F" Association="Self.FK__Orders__uId__5165187F">
+          <AssociationSet Name="FK__Orders__uId__2EDAF651" Association="Self.FK__Orders__uId__2EDAF651">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAddress__uId__3F466844" Association="Self.FK__UserAddress__uId__3F466844">
+          <AssociationSet Name="FK__UserAddress__uId__1CBC4616" Association="Self.FK__UserAddress__uId__1CBC4616">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAddresses" EntitySet="UserAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wishlist__bId__45BE5BA9" Association="Self.FK__Wishlist__bId__45BE5BA9">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Wishlist" EntitySet="Wishlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wishlist__uId__44CA3770" Association="Self.FK__Wishlist__uId__44CA3770">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wishlist" EntitySet="Wishlist" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -320,9 +365,11 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
           <Property Name="bStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bQuantity" Type="Int32" Nullable="false" />
+          <Property Name="bCreatedAt" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Author" Relationship="Self.FK__Books__aId__282DF8C2" FromRole="Books" ToRole="Authors" />
           <NavigationProperty Name="Category" Relationship="Self.FK__Books__cId__2739D489" FromRole="Books" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__bId__3493CFA7" FromRole="Books" ToRole="OrderDetails" />
+          <NavigationProperty Name="Users" Relationship="Self.Wishlist" FromRole="Books" ToRole="Users" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -403,6 +450,9 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
           <Property Name="uState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="uCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="uPincode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="lName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="uPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK__UserAddress__uId__1CBC4616" FromRole="UserAddresses" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
@@ -410,7 +460,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             <PropertyRef Name="uId" />
           </Key>
           <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="uLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="uPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="uMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -421,6 +471,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__uId__339FAB6E" FromRole="Users" ToRole="OrderDetails" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__uId__2EDAF651" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="UserAddresses" Relationship="Self.FK__UserAddress__uId__1CBC4616" FromRole="Users" ToRole="UserAddresses" />
+          <NavigationProperty Name="Books" Relationship="Self.Wishlist" FromRole="Users" ToRole="Books" />
         </EntityType>
         <EntityType Name="LoginCredential">
           <Key>
@@ -542,6 +593,10 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Wishlist">
+          <End Role="Books" Type="Self.Book" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="BookStoreDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authors" EntityType="Self.Author" />
           <EntitySet Name="Books" EntityType="Self.Book" />
@@ -589,6 +644,10 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAddresses" EntitySet="UserAddresses" />
           </AssociationSet>
+          <AssociationSet Name="Wishlist" Association="Self.Wishlist">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -620,6 +679,7 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
                 <ScalarProperty Name="bStatus" ColumnName="bStatus" />
                 <ScalarProperty Name="bImage" ColumnName="bImage" />
                 <ScalarProperty Name="bQuantity" ColumnName="bQuantity" />
+                <ScalarProperty Name="bCreatedAt" ColumnName="bCreatedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -697,6 +757,9 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
                 <ScalarProperty Name="uState" ColumnName="uState" />
                 <ScalarProperty Name="uCountry" ColumnName="uCountry" />
                 <ScalarProperty Name="uPincode" ColumnName="uPincode" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="lName" ColumnName="lName" />
+                <ScalarProperty Name="uPhone" ColumnName="uPhone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -724,6 +787,14 @@ warning 6002: The table/view 'BookStoreDB.dbo.LoginCredentials' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="Wishlist" TypeName="BookStoreDBModel.Wishlist" StoreEntitySet="Wishlist">
+            <EndProperty Name="Books">
+              <ScalarProperty Name="bId" ColumnName="bId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="uId" ColumnName="uId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

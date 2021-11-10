@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\sroby\OneDrive - SOTI Inc\Desktop\ProjectDaywise\Day3Project\BookStoreApiV2\BookStoreApiV2\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

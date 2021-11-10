@@ -14,3 +14,7 @@ drop table Users
 
 delete from UserAddresses
 delete from Users
+
+delete from Users where uId = 1011
+
+delete from Books

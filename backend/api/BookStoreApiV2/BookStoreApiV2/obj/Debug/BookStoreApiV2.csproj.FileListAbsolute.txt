@@ -122,3 +122,7 @@ C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\System.Text.Encodings.Web.xml
 C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\System.Web.Http.Cors.xml
+C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\Fare.dll
+C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\RandomDataGenerator.dll
+C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\Fare.xml
+C:\Users\jshaju\Documents\Training Projects\soti\project-book-store\XebiaProject\backend\api\BookStoreApiV2\BookStoreApiV2\bin\RandomDataGenerator.pdb

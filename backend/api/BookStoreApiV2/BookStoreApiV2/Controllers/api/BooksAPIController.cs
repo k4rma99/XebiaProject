@@ -21,7 +21,24 @@ namespace BookStoreApiV2.Controllers
         // GET: api/BooksAPI
         public IEnumerable<Book> GetBooks()
         {
-            return db.Books.ToList();
+            List<Book> bookList =  (from books in db.Books where books.bStatus == "activated" orderby books.bCreatedAt select books).ToList();
+            foreach (Book book in bookList)
+            {
+                book.Author = db.Authors.FirstOrDefault(a=>a.aId==book.aId);
+                book.Category = db.Categories.FirstOrDefault(c=>c.cId==book.cId);
+            }
+            return bookList;
+        }
+
+        public IEnumerable<Book> GetFeaturedBooks()
+        {
+            List<Book> featuredBooks = (from books in db.Books where books.bStatus == "activated" orderby books.bPosition select books).Take(10).ToList();
+            foreach (Book book in featuredBooks)
+            {
+                book.Author = db.Authors.FirstOrDefault(a => a.aId == book.aId);
+                book.Category = db.Categories.FirstOrDefault(c => c.cId == book.cId);
+            }
+            return featuredBooks;
         }
 
         // GET: api/BooksAPI/5
@@ -80,7 +97,7 @@ namespace BookStoreApiV2.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            book.bCreatedAt = DateTime.Now.Date;
             db.Books.Add(book);
             db.SaveChanges();
 

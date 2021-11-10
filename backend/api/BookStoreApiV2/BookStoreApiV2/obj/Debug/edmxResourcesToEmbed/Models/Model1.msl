@@ -25,6 +25,7 @@
           <ScalarProperty Name="bStatus" ColumnName="bStatus" />
           <ScalarProperty Name="bImage" ColumnName="bImage" />
           <ScalarProperty Name="bQuantity" ColumnName="bQuantity" />
+          <ScalarProperty Name="bCreatedAt" ColumnName="bCreatedAt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -102,6 +103,9 @@
           <ScalarProperty Name="uState" ColumnName="uState" />
           <ScalarProperty Name="uCountry" ColumnName="uCountry" />
           <ScalarProperty Name="uPincode" ColumnName="uPincode" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="lName" ColumnName="lName" />
+          <ScalarProperty Name="uPhone" ColumnName="uPhone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -129,5 +133,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="Wishlist" TypeName="BookStoreDBModel.Wishlist" StoreEntitySet="Wishlist">
+      <EndProperty Name="Books">
+        <ScalarProperty Name="bId" ColumnName="bId" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="uId" ColumnName="uId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

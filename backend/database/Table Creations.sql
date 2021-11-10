@@ -20,10 +20,13 @@ select uMailId,uPassword, uId, uRole
 from Users
 with check option
 
+select * from LoginCredentials
 
 create table UserAddresses 
 (id int identity primary key,
 uId int foreign key references Users(uId),
+fName nvarchar(20),
+lName nvarchar(20),
 uAddressLineOne nvarchar(100) not null,
 uAddressLineTwo nvarchar(100),
 uLandMark nvarchar(100),
@@ -32,6 +35,7 @@ uState nvarchar(50) not null,
 uCountry nvarchar(50) not null,
 uPincode nvarchar(50) not null check(UPincode like REPLICATE('[0-9]', 6)))  
 
+select * from UserAddresses
 
 create table Authors 
 (aId int primary key identity(100,1),
@@ -59,7 +63,8 @@ bDescription nvarchar(300)not null,
 bPosition int not null, 
 bStatus nvarchar(10) not null check (bStatus in ('activated','deactivated')),
 bImage nvarchar(50) not null,
-bQuantity int not null)
+bQuantity int not null,
+bCreatedAt date not null)
 
 select * from Books
 
@@ -97,6 +102,13 @@ uId int foreign key references Users(uId),
 lLogType nvarchar(20),
 lUserType nvarchar(10),
 lDateAndTime date)
+
+create table Wishlist
+(uId int foreign key references Users(uId),
+bId int foreign key references Books(bId),
+constraint Pk_Wishlist primary key(uId,bId))
+
+select * from Wishlist
 
 
 

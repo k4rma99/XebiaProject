@@ -25,7 +25,7 @@ namespace BookStoreApiV2.Controllers.api
 
 
                 var path = Path.Combine(
-                    HttpContext.Current.Server.MapPath("~/Images/Book/"),
+                    HttpContext.Current.Server.MapPath("/Images/Book/"),
                     fileName
                 );
 

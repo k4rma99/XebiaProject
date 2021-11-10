@@ -73,7 +73,7 @@ namespace BookStoreApiV2.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/UsersAPI
+        // POST: api/UsersAPI/PostUser
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
         {
@@ -82,15 +82,9 @@ namespace BookStoreApiV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            //LoginCredential obj = new LoginCredential()
-            //{
-            //    uId = user.uId,
-            //    uRole = user.uRole,
-            //    uMailId = user.uMailId,
-            //    uPassword = user.uPassword
-            //};
+            user.uAccountStatus = "activated";
+            user.uRole = "user";
 
-            //db.LoginCredentials.Add(obj);
             db.Users.Add(user);
             db.SaveChanges();
 
@@ -111,21 +105,6 @@ namespace BookStoreApiV2.Controllers
             db.SaveChanges();
 
             return Ok(user);
-        }
-
-        [HttpPost]
-        [ResponseType(typeof(LoginResp))]
-        public IHttpActionResult LoginUser(Login login)
-        {
-            //Console.WriteLine(login.ToString());
-            //Console.ReadKey();
-            User user = db.Users.SingleOrDefault(u => u.uMailId == login.uMailId && u.uPassword == login.uPassword);
-            LoginResp resp = new LoginResp()
-            {
-                token = "aahghsjhk",
-                role = user.uRole
-            };
-            return Ok(resp);
         }
 
         protected override void Dispose(bool disposing)

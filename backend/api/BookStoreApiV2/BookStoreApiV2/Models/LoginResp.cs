@@ -9,5 +9,6 @@ namespace BookStoreApiV2.Models
     {
         public string token { get; set; }
         public string role { get; set; }
+        public int id { get; set; }
     }
 }

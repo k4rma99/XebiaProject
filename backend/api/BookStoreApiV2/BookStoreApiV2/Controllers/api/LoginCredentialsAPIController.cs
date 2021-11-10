@@ -7,32 +7,47 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookStoreApiV2.Models;
+using RandomDataGenerator.FieldOptions;
+using RandomDataGenerator.Randomizers;
 
 namespace BookStoreApiV2.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LoginCredentialsAPIController : ApiController
     {
         private BookStoreDBEntities db = new BookStoreDBEntities();
 
+        [HttpPost]
         // GET: api/LoginCredentialsAPI
         public IQueryable<LoginCredential> GetLoginCredentials()
         {
             return db.LoginCredentials;
         }
 
+        [HttpPost]
         // GET: api/LoginCredentialsAPI/5
-        [ResponseType(typeof(LoginCredential))]
-        public IHttpActionResult GetLoginCredential(string mailid, Login data)
+        [ResponseType(typeof(LoginResp))]
+        public IHttpActionResult VerifyLoginCredential(Login data)
         {
             LoginCredential loginCredential = db.LoginCredentials.FirstOrDefault(o => o.uMailId==data.uMailId && o.uPassword==data.uPassword);
-            if (loginCredential == null)
+            if (loginCredential == null || (from user in db.Users where user.uMailId==loginCredential.uMailId select user.uAccountStatus).ToString()=="deactivated")
             {
                 return NotFound();
             }
 
-            return Ok(loginCredential);
+            //-- Used to Generate random token. External RandomGenerator package was installed
+            var randomizerText = RandomizerFactory.GetRandomizer(new FieldOptionsText { UseNumber = true, UseSpecial = false });
+
+            LoginResp resp = new LoginResp()
+            {
+                token = randomizerText.Generate(),
+                role = loginCredential.uRole,
+                id = loginCredential.uId
+            };
+            return Ok(resp);
         }
 
         //// PUT: api/LoginCredentialsAPI/5

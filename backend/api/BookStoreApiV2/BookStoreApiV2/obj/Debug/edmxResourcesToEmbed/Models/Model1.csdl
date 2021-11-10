@@ -25,9 +25,11 @@
     <Property Name="bStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="bImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="bQuantity" Type="Int32" Nullable="false" />
+    <Property Name="bCreatedAt" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Author" Relationship="Self.FK__Books__aId__282DF8C2" FromRole="Books" ToRole="Authors" />
     <NavigationProperty Name="Category" Relationship="Self.FK__Books__cId__2739D489" FromRole="Books" ToRole="Category" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__bId__3493CFA7" FromRole="Books" ToRole="OrderDetails" />
+    <NavigationProperty Name="Users" Relationship="Self.Wishlist" FromRole="Books" ToRole="Users" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -108,6 +110,9 @@
     <Property Name="uState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uPincode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="lName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="uPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="User" Relationship="Self.FK__UserAddress__uId__1CBC4616" FromRole="UserAddresses" ToRole="Users" />
   </EntityType>
   <EntityType Name="User">
@@ -115,7 +120,7 @@
       <PropertyRef Name="uId" />
     </Key>
     <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="uLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="uMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -126,6 +131,7 @@
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__uId__339FAB6E" FromRole="Users" ToRole="OrderDetails" />
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__uId__2EDAF651" FromRole="Users" ToRole="Orders" />
     <NavigationProperty Name="UserAddresses" Relationship="Self.FK__UserAddress__uId__1CBC4616" FromRole="Users" ToRole="UserAddresses" />
+    <NavigationProperty Name="Books" Relationship="Self.Wishlist" FromRole="Users" ToRole="Books" />
   </EntityType>
   <EntityType Name="LoginCredential">
     <Key>
@@ -247,6 +253,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Wishlist">
+    <End Role="Books" Type="Self.Book" Multiplicity="*" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="BookStoreDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Authors" EntityType="Self.Author" />
     <EntitySet Name="Books" EntityType="Self.Book" />
@@ -293,6 +303,10 @@
     <AssociationSet Name="FK__UserAddress__uId__1CBC4616" Association="Self.FK__UserAddress__uId__1CBC4616">
       <End Role="Users" EntitySet="Users" />
       <End Role="UserAddresses" EntitySet="UserAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="Wishlist" Association="Self.Wishlist">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Users" EntitySet="Users" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
