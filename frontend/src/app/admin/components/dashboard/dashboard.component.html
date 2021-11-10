@@ -1,12 +1,13 @@
 <app-header></app-header>
 
+
 <!-- Breadcrumb start -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a routerLink="/dashboard">Dashboard</a>
-      </li>
-      <li class="breadcrumb-item active">My Dasboard</li>
+    <li class="breadcrumb-item">
+      <a routerLink="/dashboard">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">My Dasboard</li>
   </ol>
 </nav>
 <!-- Breadcrumb end -->
@@ -19,7 +20,7 @@
     <div class="card text-white bg-primary o-hidden h-100">
       <div class="card-body">
         <div class="card-body-icon">
-          <i class="fa fa-fw fa-comments"></i>
+          <i class="bi bi-bookshelf"></i>
         </div>
         <div class="mr-5">x Books Listed</div>
       </div>
@@ -31,7 +32,7 @@
       </a>
     </div>
   </div>
-  
+
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-warning o-hidden h-100">
       <div class="card-body">
@@ -48,8 +49,8 @@
       </a>
     </div>
   </div>
-  
-  
+
+
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-success o-hidden h-100">
       <div class="card-body">
@@ -66,8 +67,8 @@
       </a>
     </div>
   </div>
-  
-  
+
+
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-danger o-hidden h-100">
       <div class="card-body">
@@ -85,8 +86,131 @@
     </div>
   </div>
 
+
+
 </div>
 
 <!-- Cards End -->
 
-<p>dashboard works!</p>
+<hr class="solid">
+
+<!-- Table group Start -->
+<div>
+  <div class="row">
+    <div class="col-md-6">
+      <h5 class="sub-header">Latest Featured Books</h5>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Author</th>
+            <th scope="col">In Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <h5 class="sub-header">Recently Registered Users</h5>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            <th scope="col">Last Logged In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Table Group End -->
+
+  <div class="row">
+    <h3 class="sub-header">Current Orders</h3>
+    <div class="col-md-12">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order #No</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            <th scope="col">Location</th>
+            <th scope="col">Active Coupon</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Delivery Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>101</td>
+            <td>A</td>
+            <td>B</td>
+            <td>@user</td>
+            <td>India</td>
+            <td>GRAND1000</td>
+            <td>25/01/1999</td>
+            <td>Delivered</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

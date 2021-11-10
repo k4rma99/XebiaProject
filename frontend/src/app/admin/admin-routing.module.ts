@@ -1,3 +1,6 @@
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { BookProfileComponent } from './components/book-profile/book-profile.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/components/login/login.component';
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'booksdb', component: BooksListComponent },
   { path: 'usersdb', component: UserListComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'orders/:orderId', component: OrderDetailsComponent },
+  { path: 'booksdb/:booksId', component: BookProfileComponent },
+  { path: 'usersdb/:userId', component: UserProfileComponent },
 ];
 
 @NgModule({

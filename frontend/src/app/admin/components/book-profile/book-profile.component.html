@@ -1,0 +1,62 @@
+<app-header></app-header>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container" style="margin-top: -3vh;">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{book.title}}</h3>
+            <h6 class="card-subtitle">{{book.subtitle}}</h6>
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6" style="margin-left: -2.6vw;">
+                    <div class="white-box text-center"><img src="https://via.placeholder.com/430x600/00CED1/000000"
+                            class="img-responsive"></div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4 class="box-title mt-4">Summary</h4>
+                    <p>{{book.description}}</p>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title mt-3">Information</h3>
+                        <div class="table-responsive">
+                            <table class="table table-light table-striped ">
+                                <tbody>
+                                    <tr>
+                                        <td width="390">Genre</td>
+                                        <td>{{book.Genre}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="390">ISBN</td>
+                                        <td>{{book.isbn}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Author</td>
+                                        <td>{{book.author}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Publishing</td>
+                                        <td>{{book.published}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Publisher</td>
+                                        <td>{{book.publisher}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>No of Pages</td>
+                                        <td>{{book.pages}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Feature</td>
+                                        <td>{{book.featured_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Current Stock</td>
+                                        <td>{{book.stock}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
