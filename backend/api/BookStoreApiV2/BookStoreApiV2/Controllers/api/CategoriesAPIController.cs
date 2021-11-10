@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookStoreApiV2.Models;
+using System.Web.Http.Cors;
 
 namespace BookStoreApiV2.Controllers
-{
+{   
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoriesAPIController : ApiController
     {
         private BookStoreDBEntities db = new BookStoreDBEntities();
