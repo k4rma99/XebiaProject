@@ -1,3 +1,6 @@
+import { CategorieslistService } from './../../services/categorieslist.service';
+import { AuthorlistService } from './../../services/authorlist.service';
+import { Authors } from './../../models/authors';
 import { HttpClient } from '@angular/common/http';
 import { BookItem } from './../../models/book-item';
 import { BooklistService } from './../../services/booklist.service';
@@ -7,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { Genre } from '../../models/genre';
 
 @Component({
   selector: 'app-books-list',
@@ -20,11 +24,17 @@ export class BooksListComponent implements OnInit {
   modalOptions!: NgbModalOptions;
 
   books_list: any[] = [];
+  author_list: any[] = [];
+  cat_list: any[] = [];
+
   bookSubscription: Subscription | undefined = undefined;
 
   selectedFile!: File;
 
   bookForm!: FormGroup;
+  authorForm!: FormGroup;
+  catForm!: FormGroup;
+
   BooklistService: any;
 
   bookImagesPath = "~/Images/Book/";
@@ -50,9 +60,64 @@ export class BooksListComponent implements OnInit {
     102
   );
 
+  authorModel = new Authors(
+    901,
+    "A",
+    "B",
+    "C",
+    [
+      new BookItem(101,
+        "123",
+        "A",
+        "B",
+        "C",
+        "XYZ",
+        2021,
+        10,
+        "Horror",
+        2394,
+        1494,
+        1348.2934,
+        new File(["1"], "1.jpg", { type: "image/jpg", }),
+        this.bookImagesPath + "",
+        "o",
+        102)
+    ]
+  )
+
+  catModel = new Genre(
+    801,
+    "W",
+    "X",
+    "Y",
+    new File(["1"], "1.jpg", { type: "image/jpg", }),
+    "Z",
+    0,
+    new Date("2021-01-01"),
+    [
+      new BookItem(101,
+        "123",
+        "A",
+        "B",
+        "C",
+        "XYZ",
+        2021,
+        10,
+        "Horror",
+        2394,
+        1494,
+        1348.2934,
+        new File(["1"], "1.jpg", { type: "image/jpg", }),
+        this.bookImagesPath + "",
+        "o",
+        102)
+    ]
+  )
 
   constructor(
     private books : BooklistService,
+    private authors : AuthorlistService,
+    private cat : CategorieslistService,
     private router : Router,
     private form: FormBuilder,
     private modalService: NgbModal,
@@ -71,6 +136,16 @@ export class BooksListComponent implements OnInit {
       // console.log(this.books_list)
     })
 
+    this.authors.listAuthors().subscribe((auth : any) => {
+      this.author_list = auth as any[];
+      // console.log(this.books_list)
+    })
+
+    this.cat.listGenres().subscribe((auth : any) => {
+      this.cat_list = auth as any[];
+      // console.log(this.books_list)
+    })
+
     this.bookForm = this.form.group({
       id : [0],
       isbn: [''],
@@ -86,6 +161,26 @@ export class BooksListComponent implements OnInit {
       imageUrl: [this.bookImagesPath + ''],
       bookStatus: [''],
       bookPos: [0]
+    })
+
+    this.authorForm = this.form.group({
+      authorId: [0],
+      authorFname: [''],
+      authorLname: [''],
+      authorCountry: [''],
+      writtenBooks: []
+    })
+
+    this.catForm = this.form.group({
+      genreId: [0],
+      genreName: [''],
+      desc: [''],
+      ImageUrl: [''],
+      ImageFile: File,
+      genreStatus: [0],
+      genrePosition: [''],
+      createdDate: Date,
+      books: []
     })
 
   }
@@ -113,29 +208,6 @@ export class BooksListComponent implements OnInit {
     }
   }
 
-
-  // createBookItem(){
-  //   this.bookModel.isbn = this.bookForm.value.isbn;
-  //   this.bookModel.title = this.bookForm.value.title;
-  //   this.bookModel.subtitle = this.bookForm.value.subtitle;
-  //   this.bookModel.author = this.bookForm.value.author;
-  //   this.bookModel.published = this.bookForm.value.published;
-  //   this.bookModel.publisher = this.bookForm.value.publisher;
-  //   this.bookModel.pages = this.bookForm.value.pages;
-  //   this.bookModel.description = this.bookForm.value.description;
-  //   this.bookModel.website = this.bookForm.value.website;
-  //   this.bookModel.featured_date = this.bookForm.value.featured_date;
-  //   this.bookModel.stock = this.bookForm.value.stock;
-  //   this.bookModel.Genre = this.bookForm.value.Genre;
-
-
-  //   this.BooklistService.createBook(this.bookModel)
-  //     .subscribe((res: any) => {
-  //       console.log(res);
-  //       alert("Book added sucessfully")
-  //     })
-  //     this.bookForm .reset;
-  // }
 
   onSubmit(){
     this.bookModel.imageFile = this.selectedFile;
@@ -181,6 +253,38 @@ export class BooksListComponent implements OnInit {
       bookPos: book.bookPos
     });
   
+  }
+
+  deleteAuthor(authorId: number){
+    this.authors.deleteAuthor(authorId)
+    .subscribe(
+      data => console.log("Success!" , data),
+      error => console.log("Error" , error)
+    )
+  }
+
+  addAuthor(){
+    this.authors.createAuthor(this.authorModel)
+      .subscribe(
+        data => console.log("Success!" , data),
+        error => console.log("Error" , error)
+      )
+  }
+
+  deleteCat(genreId: number){
+    this.cat.deleteGenre(genreId)
+    .subscribe(
+      data => console.log("Success!" , data),
+      error => console.log("Error" , error)
+    )
+  }
+
+  addCat(){
+    this.cat.createGenre(this.catModel)
+      .subscribe(
+        data => console.log("Success!" , data),
+        error => console.log("Error" , error)
+      )
   }
 
 

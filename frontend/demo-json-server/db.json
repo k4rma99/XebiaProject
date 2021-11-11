@@ -523,5 +523,60 @@
       "comments": ""
     }
   ],
-  "address": []
+  "address": [],
+  "authors": [
+    {
+      "authorId": "18384",
+      "authorFname": "X",
+      "authorLname": "Y",
+      "authorCountry": "Z",
+      "writtenBooks" : [
+        {
+          "id": 102,
+          "isbn": "9781491943533",
+          "title": "Practical Modern JavaScript",
+          "subtitle": "Dive into ES6 and the Future of JavaScript",
+          "author": "Nicolás Bevacqua",
+          "published": "2017-07-16",
+          "publisher": "O'Reilly Media",
+          "pages": 334,
+          "description": "To get the most out of modern JavaScript, you need learn the latest features of its parent specification, ECMAScript 6 (ES6). This book provides a highly practical look at ES6, without getting lost in the specification or its implementation details.",
+          "website": "https://github.com/mjavascript/practical-modern-javascript",
+          "featured_date": "2021-03-05",
+          "stock": 3,
+          "Genre": "Y"
+        }
+      ]
+    }
+  ],
+  "coupons": [],
+  "genres":[
+    {
+      "genreId": "8012",
+      "genreName": "Y",
+      "desc": "HJBJHBJCD",
+      "ImageUrl": "https://i2.wp.com/timothyrjeveland.com/wp-content/uploads/2019/04/the-historic-origins-of-the-fantasy-genre-explained.jpg?fit=954%2C530&ssl=1",
+      "genreStatus": "active",
+      "genrePosition": 0,
+      "createdDate": "2021-01-01",
+      "books": [
+        {
+          "id": 102,
+          "isbn": "9781491943533",
+          "title": "Practical Modern JavaScript",
+          "subtitle": "Dive into ES6 and the Future of JavaScript",
+          "author": "Nicolás Bevacqua",
+          "published": "2017-07-16",
+          "publisher": "O'Reilly Media",
+          "pages": 334,
+          "description": "To get the most out of modern JavaScript, you need learn the latest features of its parent specification, ECMAScript 6 (ES6). This book provides a highly practical look at ES6, without getting lost in the specification or its implementation details.",
+          "website": "https://github.com/mjavascript/practical-modern-javascript",
+          "featured_date": "2021-03-05",
+          "stock": 3,
+          "Genre": "Y"
+        }
+      ]
+    }
+  ]
+
 }

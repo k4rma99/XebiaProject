@@ -8,253 +8,485 @@
   </ol>
 </nav>
 
-<!-- Button trigger modal -->
-<button class="btn btn-primary" (click)="open(mymodal)">Add A New Book</button>
 
-<!-- Add a book Modal -->
-<ng-template #mymodal let-modal>
-  <div class="modal-header">
-    <h5 class="modal-title" id="modal-basic-title">Add a new book</h5>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="book-tab" data-bs-toggle="tab" data-bs-target="#books" type="button" role="tab" aria-controls="home" aria-selected="true">Books</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="author-tab" data-bs-toggle="tab" data-bs-target="#authors" type="button" role="tab" aria-controls="profile" aria-selected="false">Authors</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="cat-tab" data-bs-toggle="tab" data-bs-target="#categories" type="button" role="tab" aria-controls="contact" aria-selected="false">Categories</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="books" role="tabpanel" aria-labelledby="book-tab">
+    
+        <!-- Button trigger modal -->
+    <button class="btn btn-primary" (click)="open(mymodal)" style="margin-top: 20px; margin-bottom: 20px;">Add A New Book</button>
 
-  <form #bookForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-    <!-- 
-    {{bookForm.value | json}}
-    <hr />
-    {{bookForm | json}} -->
-
-    <div class="modal-body">
-      <div class="form-group">
-        <label>ID</label>
-        <input type="text" required #id="ngModel" class="form-control "
-           name="id" [(ngModel)]="bookModel.id">
+    <!-- Add a book Modal -->
+    <ng-template #mymodal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Add a new book</h5>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
-      <div class="form-group">
-        <label>Book Title</label>
-        <input type="text" required #title="ngModel" class="form-control "
-           name="title" [(ngModel)]="bookModel.title">
+      <form #bookForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        <!-- 
+        {{bookForm.value | json}}
+        <hr />
+        {{bookForm | json}} -->
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ID</label>
+            <input type="text" required #id="ngModel" class="form-control "
+              name="id" [(ngModel)]="bookModel.id">
+          </div>
+
+          <div class="form-group">
+            <label>Book Title</label>
+            <input type="text" required #title="ngModel" class="form-control "
+              name="title" [(ngModel)]="bookModel.title">
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="">ISBN</label>
+            <input type="text" class="form-control " 
+              name="isbn" [(ngModel)]="bookModel.isbn" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Author</label>
+            <input type="text" class="form-control" name="author" [(ngModel)]="bookModel.author" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Publisher</label>
+            <input type="text" class="form-control " 
+              name="publisher" [(ngModel)]="bookModel.publisher" />
+          </div>
+
+
+          <div class="form-group">
+            <label for="">Description</label>
+            <input type="text" class="form-control " 
+              name="desc" [(ngModel)]="bookModel.description" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Year</label>
+            <input type="number" min=1 class="form-control" name="year" [(ngModel)]="bookModel.year" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Genre</label>
+            <input type="text" class="form-control " 
+              name="genre" [(ngModel)]="bookModel.genre" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Price</label>
+            <input type="number" min=1 class="form-control" name="price" [(ngModel)]="bookModel.price" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Stock</label>
+            <input type="number" min=1 class="form-control" name="stock" [(ngModel)]="bookModel.stock" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Positon</label>
+            <input type="number" min=1 class="form-control" name="position" [(ngModel)]="bookModel.bookPos" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Status</label>
+            <input type="number" min=1 class="form-control" name="status" [(ngModel)]="bookModel.bookStatus" />
+          </div>
+
+          <div class="form-group">
+            <label for="">ImageFile</label>
+            <input type="file" class="form-control" name="image" (change)="onFileSelected($event)" [(ngModel)]="bookModel.imageFile" />
+            <!-- <input type="button" name="upload" value="upload" (click)="imageUpload()" /> -->
+          </div>
+
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+
+      </div>
+    </ng-template>
+
+    <ng-template #editModal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Add a new book</h5>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
+      <form [formGroup]="bookForm" novalidate>
+        <!-- 
+        {{bookForm.value | json}}
+        <hr />
+        {{bookForm | json}} -->
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ID</label>
+            <input type="text" required class="form-control "
+              name="id">
+          </div>
+
+          <div class="form-group">
+            <label>Book Title</label>
+            <input type="text" required class="form-control "
+              name="title">
+          </div>
 
 
-      <div class="form-group">
-        <label for="">ISBN</label>
-        <input type="text" class="form-control " 
-          name="isbn" [(ngModel)]="bookModel.isbn" />
+
+          <div class="form-group">
+            <label for="">ISBN</label>
+            <input type="text" class="form-control " 
+              name="isbn">
+          </div>
+
+          <div class="form-group">
+            <label for="">Author</label>
+            <input type="text" class="form-control" name="author">
+          </div>
+
+          <div class="form-group">
+            <label for="">Publisher</label>
+            <input type="text" class="form-control " 
+              name="publisher">
+          </div>
+
+
+          <div class="form-group">
+            <label for="">Description</label>
+            <input type="text" class="form-control " 
+              name="desc" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Year</label>
+            <input type="number" min=1 class="form-control" name="year"/>
+          </div>
+
+          <div class="form-group">
+            <label for="">Genre</label>
+            <input type="text" class="form-control " 
+              name="genre"/>
+          </div>
+
+          <div class="form-group">
+            <label for="">Price</label>
+            <input type="number" min=1 class="form-control" name="price"/>
+          </div>
+
+          <div class="form-group">
+            <label for="">Stock</label>
+            <input type="number" min=1 class="form-control" name="stock"/>
+          </div>
+
+          <div class="form-group">
+            <label for="">Positon</label>
+            <input type="number" min=1 class="form-control" name="position"/>
+          </div>
+
+          <div class="form-group">
+            <label for="">Status</label>
+            <input type="number" min=1 class="form-control" name="status" />
+          </div>
+
+          <div class="form-group">
+            <label for="">ImageFile</label>
+            <input type="string" min=1 class="form-control" name="image"  />
+          </div>
+
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+
       </div>
+    </ng-template>
 
-      <div class="form-group">
-        <label for="">Author</label>
-        <input type="text" class="form-control" name="author" [(ngModel)]="bookModel.author" />
+    <div class="row">
+      <h3 class="sub-header">Books Registered In Library</h3>
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr class="clickable-row">
+              <th scope="col">#</th>
+              <th scope="col">Title Name</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Author</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">ISBN Code</th>
+              <th scope="col">Status</th>
+              <th scope="col">Position</th>
+              <th scope="col">Price</th>
+              <th scope="col">Book Cover</th>
+              <th scope="col">In Stock</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let book of books_list">
+            <tr>
+              <td>{{book.id}}</td>
+              <td>{{book.title}}</td>
+              <td>{{book.genre}}</td>
+              <td>{{book.author}}</td>
+              <td>{{book.publisher}}</td>
+              <td>{{book.isbn}}</td>
+              <td>{{book.bookStatus}}</td>
+              <td>{{book.bookPos}}</td>
+              <td>{{book.price}}</td>
+              <td><img src={{book.imageUrl}} alt="img" width="100px" height="300px"></td>
+              <td>{{book.stock}}</td>
+              <td>
+                <button class="btn btn-sm btn-info" (click)="getDetails(book)" style="margin: 2px;">Details</button>
+                <button class="btn btn-sm btn-warning" (click)="updateItem(editModal , book)" style="margin: 2px;">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="removeItem(book.id)" style="margin: 2px;">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <div class="form-group">
-        <label for="">Publisher</label>
-        <input type="text" class="form-control " 
-          name="publisher" [(ngModel)]="bookModel.publisher" />
-      </div>
-
-
-      <div class="form-group">
-        <label for="">Description</label>
-        <input type="text" class="form-control " 
-          name="desc" [(ngModel)]="bookModel.description" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Year</label>
-        <input type="number" min=1 class="form-control" name="year" [(ngModel)]="bookModel.year" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Genre</label>
-        <input type="text" class="form-control " 
-          name="genre" [(ngModel)]="bookModel.genre" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Price</label>
-        <input type="number" min=1 class="form-control" name="price" [(ngModel)]="bookModel.price" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Stock</label>
-        <input type="number" min=1 class="form-control" name="stock" [(ngModel)]="bookModel.stock" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Positon</label>
-        <input type="number" min=1 class="form-control" name="position" [(ngModel)]="bookModel.bookPos" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Status</label>
-        <input type="number" min=1 class="form-control" name="status" [(ngModel)]="bookModel.bookStatus" />
-      </div>
-
-      <div class="form-group">
-        <label for="">ImageFile</label>
-        <input type="file" class="form-control" name="image" (change)="onFileSelected($event)" [(ngModel)]="bookModel.imageFile" />
-        <input type="button" name="upload" value="upload" (click)="imageUpload()" />
-      </div>
-
     </div>
-    <div class="modal-footer border-top-0 d-flex justify-content-center">
-      <button type="submit" class="btn btn-success">Submit</button>
-      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
+
+
+  </div>
+
+  <div class="tab-pane fade" id="authors" role="tabpanel" aria-labelledby="author-tab">
+    
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary" (click)="open(authormodal)" style="margin-top: 20px; margin-bottom: 20px;">Add Author</button>
+
+    <!-- Add a book Modal -->
+    <ng-template #authormodal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Add an author details</h5>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form #authorForm="ngForm" (ngSubmit)="addAuthor()" novalidate>
+        <!-- 
+        {{bookForm.value | json}}
+        <hr />
+        {{bookForm | json}} -->
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Author ID</label>
+            <input type="text" required #id="ngModel" class="form-control "
+              name="id" [(ngModel)]="authorModel.authorId">
+          </div>
+
+          <div class="form-group">
+            <label>Author FName</label>
+            <input type="text" required #title="ngModel" class="form-control "
+              name="title" [(ngModel)]="authorModel.authorFname">
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="">Author LName</label>
+            <input type="text" class="form-control " 
+              name="isbn" [(ngModel)]="authorModel.authorLname" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Country</label>
+            <input type="text" class="form-control" name="author" [(ngModel)]="authorModel.authorCountry" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Books</label>
+            <input type="text" class="form-control " 
+              name="publisher" [(ngModel)]="authorModel.writtenBooks" />
+          </div>
+
+
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+
+      </div>
+    </ng-template>
+
+    
+    <div class="row">
+      <h3 class="sub-header">Authors Regsitered</h3>
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr class="clickable-row">
+              <th scope="col">#</th>
+              <th scope="col">Author FNamw</th>
+              <th scope="col">Author LName</th>
+              <th scope="col">Country</th>
+              <th scope="col">Written Books</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let author of author_list">
+            <tr>
+              <td>{{author.authorId}}</td>
+              <td>{{author.authorFname}}</td>
+              <td>{{author.authorLname}}</td>
+              <td>{{author.authorCountry}}</td>
+              <td>{{author.writtenBooks}}</td>
+              <td>
+                <button class="btn btn-sm btn-danger" (click)="deleteAuthor(author.authorId)" style="margin: 2px;">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </form>
-
-  <div class="modal-footer">
 
   </div>
-</ng-template>
+  
+  <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="cat-tab">
+    
+         <!-- Button trigger modal -->
+    <button class="btn btn-primary" (click)="open(catModal)" style="margin-top: 20px; margin-bottom: 20px;">Add A Category</button>
 
-<ng-template #editModal let-modal>
-  <div class="modal-header">
-    <h5 class="modal-title" id="modal-basic-title">Add a new book</h5>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-  <form [formGroup]="bookForm" novalidate>
-    <!-- 
-    {{bookForm.value | json}}
-    <hr />
-    {{bookForm | json}} -->
-
-    <div class="modal-body">
-      <div class="form-group">
-        <label>ID</label>
-        <input type="text" required class="form-control "
-           name="id">
+    <!-- Add a book Modal -->
+    <ng-template #catModal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Add a Category</h5>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
-      <div class="form-group">
-        <label>Book Title</label>
-        <input type="text" required class="form-control "
-           name="title">
+      <form #catForm="ngForm" (ngSubmit)="addCat()" novalidate>
+        <!-- 
+        {{bookForm.value | json}}
+        <hr />
+        {{bookForm | json}} -->
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ID</label>
+            <input type="text" required #id="ngModel" class="form-control "
+              name="cat_id" [(ngModel)]="catModel.genreId">
+          </div>
+
+          <div class="form-group">
+            <label>Category Name</label>
+            <input type="text" required #title="ngModel" class="form-control "
+              name="genreName" [(ngModel)]="catModel.genreName">
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="">Category Description</label>
+            <input type="text" class="form-control " 
+              name="desc" [(ngModel)]="catModel.desc" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Date of Creation</label>
+            <input type="date" class="form-control " 
+              name="cat_date" [(ngModel)]="catModel.createdDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Positon</label>
+            <input type="number" min=1 class="form-control" name="cat_position" [(ngModel)]="catModel.genrePosition" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Status</label>
+            <input type="number" min=1 class="form-control" name="status" [(ngModel)]="catModel.genreStatus" />
+          </div>
+
+          <div class="form-group">
+            <label for="">ImageFile</label>
+            <!-- <input type="file" class="form-control" name="cat_image" (change)="onFileSelected($event)" [(ngModel)]="catModel.ImageFile" /> -->
+            <!-- <input type="button" name="upload" value="upload" (click)="imageUpload()" /> -->
+            <input type="text" name="upload" placeholder="Image url" [(ngModel)]="catModel.ImageUrl" >
+          </div>
+
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+
       </div>
+    </ng-template>
 
-
-
-      <div class="form-group">
-        <label for="">ISBN</label>
-        <input type="text" class="form-control " 
-          name="isbn">
+    <div class="row">
+      <h3 class="sub-header">Genres</h3>
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr class="clickable-row">
+              <th scope="col">#</th>
+              <th scope="col">Category Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Status</th>
+              <th scope="col">Position</th>
+              <th scope="col">Date of Creation</th>
+              <th scope="col">Books</th>
+              <th scope="col">Genre Cover</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cat of cat_list">
+            <tr>
+              <td>{{cat.genreId}}</td>
+              <td>{{cat.genreName}}</td>
+              <td>{{cat.desc}}</td>
+              <td>{{cat.genreStatus}}</td>
+              <td>{{cat.genrePosition}}</td>
+              <td>{{cat.createdDate}}</td>
+              <td>{{cat.books}}</td>
+              <td><img src={{cat.ImageUrl}} alt="img" style="width: 100px; height: 100px;"></td>
+              <td>
+                <button class="btn btn-sm btn-danger" (click)="deleteCat(cat.genreId)" style="margin: 2px;">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <div class="form-group">
-        <label for="">Author</label>
-        <input type="text" class="form-control" name="author">
-      </div>
-
-      <div class="form-group">
-        <label for="">Publisher</label>
-        <input type="text" class="form-control " 
-          name="publisher">
-      </div>
-
-
-      <div class="form-group">
-        <label for="">Description</label>
-        <input type="text" class="form-control " 
-          name="desc" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Year</label>
-        <input type="number" min=1 class="form-control" name="year"/>
-      </div>
-
-      <div class="form-group">
-        <label for="">Genre</label>
-        <input type="text" class="form-control " 
-          name="genre"/>
-      </div>
-
-      <div class="form-group">
-        <label for="">Price</label>
-        <input type="number" min=1 class="form-control" name="price"/>
-      </div>
-
-      <div class="form-group">
-        <label for="">Stock</label>
-        <input type="number" min=1 class="form-control" name="stock"/>
-      </div>
-
-      <div class="form-group">
-        <label for="">Positon</label>
-        <input type="number" min=1 class="form-control" name="position"/>
-      </div>
-
-      <div class="form-group">
-        <label for="">Status</label>
-        <input type="number" min=1 class="form-control" name="status" />
-      </div>
-
-      <div class="form-group">
-        <label for="">ImageFile</label>
-        <input type="string" min=1 class="form-control" name="image"  />
-      </div>
-
     </div>
-    <div class="modal-footer border-top-0 d-flex justify-content-center">
-      <button type="submit" class="btn btn-success">Submit</button>
-      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
-    </div>
-  </form>
-
-  <div class="modal-footer">
 
   </div>
-</ng-template>
 
-<div class="row">
-  <h3 class="sub-header">Books Registered In Library</h3>
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr class="clickable-row">
-          <th scope="col">#</th>
-          <th scope="col">Title Name</th>
-          <th scope="col">Genre</th>
-          <th scope="col">Author</th>
-          <th scope="col">Publisher</th>
-          <th scope="col">ISBN Code</th>
-          <th scope="col">Status</th>
-          <th scope="col">Position</th>
-          <th scope="col">Price</th>
-          <th scope="col">Book Cover</th>
-          <th scope="col">In Stock</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let book of books_list">
-        <tr>
-          <td>{{book.id}}</td>
-          <td>{{book.title}}</td>
-          <td>{{book.genre}}</td>
-          <td>{{book.author}}</td>
-          <td>{{book.publisher}}</td>
-          <td>{{book.isbn}}</td>
-          <td>{{book.bookStatus}}</td>
-          <td>{{book.bookPos}}</td>
-          <td>{{book.price}}</td>
-          <td><img src={{book.imageFile}} alt="img"></td>
-          <td>{{book.stock}}</td>
-          <td>
-            <button class="btn btn-sm btn-info" (click)="getDetails(book)" style="margin: 2px;">Details</button>
-            <button class="btn btn-sm btn-warning" (click)="updateItem(editModal , book)" style="margin: 2px;">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="removeItem(book.id)" style="margin: 2px;">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>
