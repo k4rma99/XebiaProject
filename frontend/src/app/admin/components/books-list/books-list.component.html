@@ -11,7 +11,7 @@
 <!-- Button trigger modal -->
 <button class="btn btn-primary" (click)="open(mymodal)">Add A New Book</button>
 
-<!-- Modal -->
+<!-- Add a book Modal -->
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="modal-basic-title">Add a new book</h5>
@@ -29,34 +29,22 @@
     <div class="modal-body">
       <div class="form-group">
         <label>ID</label>
-        <input type="text" required #id="ngModel"
-                class="form-control is-invalid" 
-                [class.is-invalid]  ="id.invalid && id.touched"
-                name="id" 
-                [(ngModel)]="bookModel.id"
-        >
+        <input type="text" required #id="ngModel" class="form-control "
+           name="id" [(ngModel)]="bookModel.id">
       </div>
 
       <div class="form-group">
         <label>Book Title</label>
-        <input type="text" required #title="ngModel"
-                class="form-control is-invalid" 
-                [class.is-invalid]  ="title.invalid && title.touched"
-                name="title" 
-                [(ngModel)]="bookModel.title"
-        >
+        <input type="text" required #title="ngModel" class="form-control "
+           name="title" [(ngModel)]="bookModel.title">
       </div>
 
 
 
       <div class="form-group">
         <label for="">ISBN</label>
-        <input type="text" class="form-control" name="isbn" [(ngModel)]="bookModel.isbn" />
-      </div>
-
-      <div class="form-group">
-        <label for="">Subtitle</label>
-        <input type="text" class="form-control" name="subtitle" [(ngModel)]="bookModel.subtitle" />
+        <input type="text" class="form-control " 
+          name="isbn" [(ngModel)]="bookModel.isbn" />
       </div>
 
       <div class="form-group">
@@ -66,40 +54,32 @@
 
       <div class="form-group">
         <label for="">Publisher</label>
-        <input type="text" class="form-control" name="publisher" [(ngModel)]="bookModel.publisher" />
+        <input type="text" class="form-control " 
+          name="publisher" [(ngModel)]="bookModel.publisher" />
       </div>
 
-      <div class="form-group">
-        <label for="">Published Date</label>
-        <input type="date" value="2021-01-01" 
-                min="1300-01-01" max="2021-12-31" 
-                class="form-control" 
-                name="published"
-                [(ngModel)]="bookModel.publisher" 
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="">Pages</label>
-        <input type="" class="form-control" id="" placeholder="" class="form-control" name="pages"
-          [(ngModel)]="bookModel.pages" />
-      </div>
 
       <div class="form-group">
         <label for="">Description</label>
-        <input type="text" class="form-control" name="desc" [(ngModel)]="bookModel.description" />
+        <input type="text" class="form-control " 
+          name="desc" [(ngModel)]="bookModel.description" />
       </div>
 
       <div class="form-group">
-        <label for="">Website</label>
-        <input type="text" class="form-control" name="website" [(ngModel)]="bookModel.website" />
+        <label for="">Year</label>
+        <input type="number" min=1 class="form-control" name="year" [(ngModel)]="bookModel.year" />
       </div>
 
       <div class="form-group">
         <label for="">Genre</label>
-        <input type="text" class="form-control" name="genre" [(ngModel)]="bookModel.Genre" />
+        <input type="text" class="form-control " 
+          name="genre" [(ngModel)]="bookModel.genre" />
       </div>
 
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="number" min=1 class="form-control" name="price" [(ngModel)]="bookModel.price" />
+      </div>
 
       <div class="form-group">
         <label for="">Stock</label>
@@ -107,9 +87,120 @@
       </div>
 
       <div class="form-group">
-        <label for="">Registered Date</label>
-        <input type="date" value="2021-01-01" min="2018-01-01" max="2021-12-31" class="form-control"
-          name="featured_date" [(ngModel)]="bookModel.featured_date" />
+        <label for="">Positon</label>
+        <input type="number" min=1 class="form-control" name="position" [(ngModel)]="bookModel.bookPos" />
+      </div>
+
+      <div class="form-group">
+        <label for="">Status</label>
+        <input type="number" min=1 class="form-control" name="status" [(ngModel)]="bookModel.bookStatus" />
+      </div>
+
+      <div class="form-group">
+        <label for="">ImageFile</label>
+        <input type="file" class="form-control" name="image" (change)="onFileSelected($event)" [(ngModel)]="bookModel.imageFile" />
+        <input type="button" name="upload" value="upload" (click)="imageUpload()" />
+      </div>
+
+    </div>
+    <div class="modal-footer border-top-0 d-flex justify-content-center">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close without saving</button>
+    </div>
+  </form>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Add a new book</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <form [formGroup]="bookForm" novalidate>
+    <!-- 
+    {{bookForm.value | json}}
+    <hr />
+    {{bookForm | json}} -->
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label>ID</label>
+        <input type="text" required class="form-control "
+           name="id">
+      </div>
+
+      <div class="form-group">
+        <label>Book Title</label>
+        <input type="text" required class="form-control "
+           name="title">
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="">ISBN</label>
+        <input type="text" class="form-control " 
+          name="isbn">
+      </div>
+
+      <div class="form-group">
+        <label for="">Author</label>
+        <input type="text" class="form-control" name="author">
+      </div>
+
+      <div class="form-group">
+        <label for="">Publisher</label>
+        <input type="text" class="form-control " 
+          name="publisher">
+      </div>
+
+
+      <div class="form-group">
+        <label for="">Description</label>
+        <input type="text" class="form-control " 
+          name="desc" />
+      </div>
+
+      <div class="form-group">
+        <label for="">Year</label>
+        <input type="number" min=1 class="form-control" name="year"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Genre</label>
+        <input type="text" class="form-control " 
+          name="genre"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="number" min=1 class="form-control" name="price"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Stock</label>
+        <input type="number" min=1 class="form-control" name="stock"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Positon</label>
+        <input type="number" min=1 class="form-control" name="position"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Status</label>
+        <input type="number" min=1 class="form-control" name="status" />
+      </div>
+
+      <div class="form-group">
+        <label for="">ImageFile</label>
+        <input type="string" min=1 class="form-control" name="image"  />
       </div>
 
     </div>
@@ -135,9 +226,11 @@
           <th scope="col">Genre</th>
           <th scope="col">Author</th>
           <th scope="col">Publisher</th>
-          <th scope="col">Date of Publishing</th>
           <th scope="col">ISBN Code</th>
-          <th scope="col">Registered Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Position</th>
+          <th scope="col">Price</th>
+          <th scope="col">Book Cover</th>
           <th scope="col">In Stock</th>
           <th scope="col">Actions</th>
         </tr>
@@ -146,16 +239,18 @@
         <tr>
           <td>{{book.id}}</td>
           <td>{{book.title}}</td>
-          <td>{{book.Genre}}</td>
+          <td>{{book.genre}}</td>
           <td>{{book.author}}</td>
           <td>{{book.publisher}}</td>
-          <td>{{book.published}}</td>
           <td>{{book.isbn}}</td>
-          <td>{{book.featured_date}}</td>
+          <td>{{book.bookStatus}}</td>
+          <td>{{book.bookPos}}</td>
+          <td>{{book.price}}</td>
+          <td><img src={{book.imageFile}} alt="img"></td>
           <td>{{book.stock}}</td>
           <td>
             <button class="btn btn-sm btn-info" (click)="getDetails(book)" style="margin: 2px;">Details</button>
-            <button class="btn btn-sm btn-warning" (click)="updateItem(book.id)" style="margin: 2px;">Edit</button>
+            <button class="btn btn-sm btn-warning" (click)="updateItem(editModal , book)" style="margin: 2px;">Edit</button>
             <button class="btn btn-sm btn-danger" (click)="removeItem(book.id)" style="margin: 2px;">Delete</button>
           </td>
         </tr>

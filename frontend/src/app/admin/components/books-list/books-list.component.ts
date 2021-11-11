@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { BookItem } from './../../models/book-item';
 import { BooklistService } from './../../services/booklist.service';
 // import { Book } from './../../interfaces/book';
@@ -21,8 +22,12 @@ export class BooksListComponent implements OnInit {
   books_list: any[] = [];
   bookSubscription: Subscription | undefined = undefined;
 
+  selectedFile!: File;
+
   bookForm!: FormGroup;
   BooklistService: any;
+
+  bookImagesPath = "~/Images/Book/";
 
   selectedBook!: BookItem;
 
@@ -32,14 +37,17 @@ export class BooksListComponent implements OnInit {
     "A",
     "B",
     "C",
-    new Date("2021-01-01"),
-    "D",
-    0,
-    "E",
-    "F",
-    new Date("2021-01-01"),
-    0,
-    "F"
+    "XYZ",
+    2021,
+    10,
+    "Horror",
+    2394,
+    1494,
+    1348.2934,
+    new File(["1"], "1.jpg", {type: "image/jpg",}),
+    this.bookImagesPath + "",
+    "o",
+    102
   );
 
 
@@ -47,7 +55,8 @@ export class BooksListComponent implements OnInit {
     private books : BooklistService,
     private router : Router,
     private form: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private http: HttpClient
   ) {
     this.modalOptions = {
       backdrop:'static',
@@ -62,7 +71,29 @@ export class BooksListComponent implements OnInit {
       // console.log(this.books_list)
     })
 
+    this.bookForm = this.form.group({
+      id : [0],
+      isbn: [''],
+      title: [''],
+      author: [''],
+      publisher: [''],
+      description: [''],
+      year: [0],
+      stock : [0],
+      genre: [''],
+      price: [0],
+      imageFile: File,
+      imageUrl: [this.bookImagesPath + ''],
+      bookStatus: [''],
+      bookPos: [0]
+    })
+
   }
+
+  onFileSelected(event: any){
+    this.selectedFile=<File>event.target.files[0];
+  }
+
 
   open(content: any) {
     this.modalService.open(content, this.modalOptions).result.then((result) => {
@@ -107,6 +138,7 @@ export class BooksListComponent implements OnInit {
   // }
 
   onSubmit(){
+    this.bookModel.imageFile = this.selectedFile;
     this.books.createBook(this.bookModel)
       .subscribe(
         data => console.log("Success!" , data),
@@ -128,9 +160,27 @@ export class BooksListComponent implements OnInit {
     )
   }
 
-  updateItem(id: number){
-    console.log("Bk")
-    console.log(id);
+  updateItem(targetModal: any , book: BookItem){
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.bookForm.patchValue( {
+      id : book.id,
+      isbn: book.isbn,
+      title: book.title,
+      author: book.author,
+      publisher: book.publisher,
+      description: book.description,
+      year: book.year,
+      stock : book.stock,
+      genre: book.genre,
+      price: book.price,
+      imageFile: book.imageFile,
+      bookStatus: book.bookStatus,
+      bookPos: book.bookPos
+    });
+  
   }
 
 

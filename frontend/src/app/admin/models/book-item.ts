@@ -3,15 +3,18 @@ export class BookItem {
         public id : number,
         public isbn: string,
         public title: string,
-        public subtitle: string,
         public author: string,
-        public published: Date,
         public publisher: string,
-        public pages: number,
         public description: string,
-        public website: string,
-        public featured_date: Date,
+        public year: number,
         public stock : number,
-        public Genre: string
+        public genre: string,
+        public genreId: number,
+        public authorId: number,
+        public price: number,
+        public imageFile: File,
+        public imageUrl: string,
+        public bookStatus: string,
+        public bookPos: number
     ){}
 }

@@ -5,7 +5,6 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">{{book.title}}</h3>
-            <h6 class="card-subtitle">{{book.subtitle}}</h6>
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6" style="margin-left: -2.6vw;">
                     <div class="white-box text-center"><img src="https://via.placeholder.com/430x600/00CED1/000000"
@@ -14,6 +13,11 @@
                 <div class="col-lg-7 col-md-7 col-sm-6">
                     <h4 class="box-title mt-4">Summary</h4>
                     <p>{{book.description}}</p>
+
+                    <h2 class="mt-5">
+                        ₹{{book.price}}
+                    </h2>
+
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <h3 class="box-title mt-3">Information</h3>
                         <div class="table-responsive">
@@ -21,7 +25,7 @@
                                 <tbody>
                                     <tr>
                                         <td width="390">Genre</td>
-                                        <td>{{book.Genre}}</td>
+                                        <td>{{book.genre}}</td>
                                     </tr>
                                     <tr>
                                         <td width="390">ISBN</td>
@@ -32,20 +36,20 @@
                                         <td>{{book.author}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Date of Publishing</td>
-                                        <td>{{book.published}}</td>
+                                        <td>Year</td>
+                                        <td>{{book.year}}</td>
                                     </tr>
                                     <tr>
                                         <td>Publisher</td>
                                         <td>{{book.publisher}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No of Pages</td>
-                                        <td>{{book.pages}}</td>
+                                        <td>Status</td>
+                                        <td>{{book.bookStatus}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Date of Feature</td>
-                                        <td>{{book.featured_date}}</td>
+                                        <td>Position</td>
+                                        <td>{{book.bookPos}}</td>
                                     </tr>
                                     <tr>
                                         <td>Current Stock</td>

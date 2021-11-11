@@ -233,21 +233,6 @@
   ],
   "books": [
     {
-      "id": 101,
-      "isbn": "9781593279509",
-      "title": "Eloquent JavaScript, Third Edition",
-      "subtitle": "A Modern Introduction to Programming",
-      "Genre": "X",
-      "author": "Marijn Haverbeke",
-      "published": "2018-12-04",
-      "publisher": "No Starch Press",
-      "pages": 472,
-      "description": "JavaScript lies at the heart of almost every modern web application, from social apps like Twitter to browser-based game frameworks like Phaser and Babylon. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.",
-      "website": "http://eloquentjavascript.net/",
-      "featured_date": "2019-10-02",
-      "stock": 5
-    },
-    {
       "id": 102,
       "isbn": "9781491943533",
       "title": "Practical Modern JavaScript",
@@ -351,6 +336,23 @@
       "featured_date": "2020-05-05",
       "stock": 10,
       "Genre": "T"
+    },
+    {
+      "id": "10324",
+      "isbn": "123",
+      "title": "A",
+      "author": "B",
+      "publisher": "C",
+      "description": "XYZ",
+      "year": 2021,
+      "stock": 10,
+      "genre": "Horror",
+      "genreId": 2394,
+      "authorId": 1494,
+      "price": 1348.2934,
+      "imageFile": "C:\\fakepath\\61ZKNw0xixL.jpg",
+      "bookStatus": 1,
+      "bookPos": 102
     }
   ],
   "cart": [
