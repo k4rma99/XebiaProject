@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Caleum"
+    },
+    {
+      "fName": "Jose",
+      "lName": "Dominic",
+      "email": "a@b.com",
+      "phone": 123456789,
+      "password": "323232323232",
+      "id": 2
+    },
+    {
+      "fName": "Johny",
+      "lName": "test",
+      "email": "test@email.com",
+      "phone": 23928323982,
+      "password": "239283928392389",
+      "id": 3
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Harry Potter",
+      "author": "JK Rowling",
+      "description": "Harry is a magician sdsdsdsdsdds",
+      "price": 20,
+      "status": true
+    },
+    {
+      "id": 2,
+      "title": "Van Helsing",
+      "author": "Hugh Jackman",
+      "description": "Van helsing is a vampire hunter sdsdsdsdsdds",
+      "price": 30,
+      "status": false
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "book": {
+        "id": 1,
+        "title": "Harry Potter",
+        "author": "JK Rowling",
+        "description": "Harry is a magician sdsdsdsdsdds",
+        "price": 20
+      },
+      "qty": 4
+    },
+    {
+      "id": 2,
+      "book": {
+        "id": 200,
+        "title": "Holly Molly",
+        "author": "JK Johny",
+        "description": "Barry is a magician sdsdsdsdsdds",
+        "price": 30
+      },
+      "qty": 4
+    }
+  ],
+  "orders": [],
+  "address": []
+}

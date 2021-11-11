@@ -1,0 +1,39 @@
+<div class="container fixed-top" style="margin-top: 50px;">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search books by Title,Author or ISBN" [(ngModel)]="term">
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="col">
+      <div class="row" >
+  
+        <div class="col-12 col-md-6 col-lg-3 mb-3"   *ngFor="let book of bookList | filter:term">
+          <div  class="card">
+            <img class="card-img-top" src="{{imageRoot}}{{book.bImage}}"
+            alt="Card image cap">
+            <div class="card-body">
+            <h4 class="card-title"><a routerLink="/users/book/{{book.id}}" 
+                title="View Product">{{book.bName}}</a></h4>
+                <p class="card-text"><b>Author:{{book.author.aFName}}</b></p>
+                <p class="card-text"><b>Category:{{book.category.cName}}</b></p>
+                <p class="card-text"><b>Isbn:{{book.bISBN}}</b></p>
+              <p class="card-text">{{book.bDescription}}</p>
+              <div class="row">
+                <div class="col">
+                  <p class="btn btn-danger btn-block">{{book.bPrice | currency: 'INR'}}</p>
+                </div>
+                <div class="col">
+                  <a class="btn btn-success btn-block" (click)="handleAddToCart(book)">Add to cart</a>
+                </div>
+                <div class="col">
+                  <a class="btn btn-success btn-block" (click)="handleAddToWishlist(book)">Wishlist Item</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>

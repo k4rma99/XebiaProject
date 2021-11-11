@@ -1,0 +1,62 @@
+
+<h2>Order Details</h2>
+<div class="row" *ngFor="let item of cartItemList">
+    <div class="col-12 col-sm-12 col-md-2">
+      {{item.book.bName}}
+    </div>
+    <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+      <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+
+        <h6><strong>{{item.book.bPrice | currency: 'INR'}}</strong></h6>
+      </div>
+      <div class="col-4 col-sm-4 col-md-4">
+        <div class="quantity">
+           Quantity: {{item.qty}}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-4 col-sm-4 col-md-4">
+        <h6> Have a Coupon Code?</h6>
+         <input placeholder="CODE HERE" type="text" [(ngModel)]="couponCode" >
+         <a (click)="handleApplyCoupon(couponCode)" class="btn btn-secondary">Apply coupon</a>
+         <h6>{{couponMessage}}</h6>
+        <h6> Total Cost: <b>{{totalPrice | currency: 'INR'}}</b></h6>
+      </div>
+    
+  </div>
+  <div>
+    <label >Choose shipping address:</label>
+<select  [(ngModel)]="shippingAddress" class="form-select" id="sAddress" aria-label="Default select example" required>
+    
+    <option *ngFor="let address of addressList" value="{{address}}">
+      {{address}}
+    </option>
+    
+</select>
+  </div>
+
+  <div>
+    <label >Choose billing address:</label>
+<select  [(ngModel)]="billingAddress" class="form-select" id="bAddress" aria-label="Default select example" required>
+    
+    <option *ngFor="let address of addressList" value="{{address}}">
+      {{address}}
+    </option>
+    
+</select>
+  </div>
+  
+
+<div>
+  <label >Choose Payment Mode:</label><br>
+<select [(ngModel)]="paymentMode" name="PaymentOptions" id="paymentOptions" required>
+  <option value="card">Card</option>
+  <option value="cash">Cash</option>
+</select>
+</div>
+
+<br>
+<button (click)="handlePlaceOrder(couponCode)" class="btn btn-primary">Place Order</button>
