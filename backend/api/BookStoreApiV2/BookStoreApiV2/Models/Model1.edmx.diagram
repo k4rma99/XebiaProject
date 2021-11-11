@@ -4,12 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9219675b95694ead8d4522955d2a3e53" Name="Diagram1" ZoomLevel="55">
+      <Diagram DiagramId="9219675b95694ead8d4522955d2a3e53" Name="Diagram1" ZoomLevel="108">
         <EntityTypeShape EntityType="BookStoreDBModel.Author" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.Book" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.Category" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.Coupon" Width="1.5" PointX="8.25" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookStoreDBModel.Log" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.OrderDetail" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.Order" Width="1.5" PointX="10.5" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BookStoreDBModel.UserAddress" Width="1.5" PointX="7.5" PointY="15.75" IsExpanded="true" />
@@ -19,7 +18,6 @@
         <AssociationConnector Association="BookStoreDBModel.FK__Books__cId__2739D489" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__OrderDetail__bId__3493CFA7" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__Orders__orCoupon__2FCF1A8A" ManuallyRouted="false" />
-        <AssociationConnector Association="BookStoreDBModel.FK__Logs__uId__37703C52" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__OrderDetail__oId__32AB8735" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__OrderDetail__uId__339FAB6E" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreDBModel.FK__Orders__uId__2EDAF651" ManuallyRouted="false" />

@@ -11,10 +11,14 @@ drop table Authors
 drop table UserAddresses
 drop table LoginCredentials
 drop table Users
+drop table Wishlist
 
 delete from UserAddresses
 delete from Users
 
 delete from Users where uId = 1011
+delete from UserAddresses
 
 delete from Books
+
+drop table Wishlist

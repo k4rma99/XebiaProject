@@ -24,6 +24,9 @@ namespace BookStoreApiV2.Models
         public Nullable<int> uId { get; set; }
         public Nullable<System.DateTime> orDateAndTime { get; set; }
         public Nullable<int> orCouponId { get; set; }
+        public Nullable<double> totalPrice { get; set; }
+        public string shippingAddress { get; set; }
+        public string billingAddress { get; set; }
     
         public virtual Coupon Coupon { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

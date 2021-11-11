@@ -81,6 +81,8 @@ uId int foreign key references Users(uId),
 orDateAndTime date,
 orCouponId int foreign key references Coupons(coId))
 
+select * from Orders
+
 create table OrderDetails 
 (ordrId int primary key identity,
 oId int foreign key references Orders(oId),
@@ -88,12 +90,9 @@ uId int foreign key references Users(uId),
 bId int foreign key references Books(bId),
 bISBN varchar(17) not null,
 bPrice float not null,
-bQuantity int not null,
-oTotalPrice float not null,
-oShippingAddress nvarchar(250) not null,
-oBillingAddress nvarchar(250) not null,
-oPaymentMode nvarchar(10) not null)
+bQuantity int not null)
 
+select * from OrderDetails 
 
 
 create table Logs 
@@ -104,13 +103,34 @@ lUserType nvarchar(10),
 lDateAndTime date)
 
 create table Wishlist
-(uId int foreign key references Users(uId),
+(wid int primary key,
+uId int foreign key references Users(uId),
 bId int foreign key references Books(bId),
-constraint Pk_Wishlist primary key(uId,bId))
+constraint U_Wishlist unique (uId,bId))
 
 select * from Wishlist
 
 
+create trigger tri_iOrderDetails
+on OrderDetails
+with encryption
+after insert
+as
+begin
+declare @qty int
+declare @bid int
+select @qty=bQuantity from inserted
+select @bid=bId from inserted
+update Books set bQuantity=bQuantity-@qty where bId=@bid
+if(@@ROWCOUNT>=1)
+begin
+print 'Book Count Changed'
+end
+else
+begin
+print 'Book Count Not Changed'
+end
+end
 
 
 

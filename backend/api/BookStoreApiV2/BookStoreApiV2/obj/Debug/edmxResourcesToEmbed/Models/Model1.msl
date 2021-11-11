@@ -74,16 +74,15 @@
           <ScalarProperty Name="bISBN" ColumnName="bISBN" />
           <ScalarProperty Name="bPrice" ColumnName="bPrice" />
           <ScalarProperty Name="bQuantity" ColumnName="bQuantity" />
-          <ScalarProperty Name="oTotalPrice" ColumnName="oTotalPrice" />
-          <ScalarProperty Name="oShippingAddress" ColumnName="oShippingAddress" />
-          <ScalarProperty Name="oBillingAddress" ColumnName="oBillingAddress" />
-          <ScalarProperty Name="oPaymentMode" ColumnName="oPaymentMode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="BookStoreDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="billingAddress" ColumnName="billingAddress" />
+          <ScalarProperty Name="shippingAddress" ColumnName="shippingAddress" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
           <ScalarProperty Name="oId" ColumnName="oId" />
           <ScalarProperty Name="uId" ColumnName="uId" />
           <ScalarProperty Name="orDateAndTime" ColumnName="orDateAndTime" />
@@ -133,13 +132,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Wishlist" TypeName="BookStoreDBModel.Wishlist" StoreEntitySet="Wishlist">
-      <EndProperty Name="Books">
-        <ScalarProperty Name="bId" ColumnName="bId" />
-      </EndProperty>
-      <EndProperty Name="Users">
-        <ScalarProperty Name="uId" ColumnName="uId" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <!-- <AssociationSetMapping Name="Wishlist" TypeName="BookStoreDBModel.Wishlist" StoreEntitySet="Wishlist"> -->
+    <!-- <EndProperty Name="Books"> -->
+    <!-- <ScalarProperty Name="bId" ColumnName="bId" /> -->
+    <!-- </EndProperty> -->
+    <!-- <EndProperty Name="Users"> -->
+    <!-- <ScalarProperty Name="uId" ColumnName="uId" /> -->
+    <!-- </EndProperty> -->
+    <!-- </AssociationSetMapping> -->
   </EntityContainerMapping>
 </Mapping>

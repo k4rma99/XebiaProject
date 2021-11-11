@@ -18,7 +18,6 @@ namespace BookStoreApiV2.Models
         public Book()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.Users = new HashSet<User>();
         }
     
         public int bId { get; set; }
@@ -38,7 +37,5 @@ namespace BookStoreApiV2.Models
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

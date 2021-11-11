@@ -21,10 +21,6 @@ namespace BookStoreApiV2.Models
         public string bISBN { get; set; }
         public double bPrice { get; set; }
         public int bQuantity { get; set; }
-        public double oTotalPrice { get; set; }
-        public string oShippingAddress { get; set; }
-        public string oBillingAddress { get; set; }
-        public string oPaymentMode { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Order Order { get; set; }

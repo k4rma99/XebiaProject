@@ -29,7 +29,6 @@ namespace BookStoreApiV2.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Coupon> Coupons { get; set; }
-        public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<UserAddress> UserAddresses { get; set; }

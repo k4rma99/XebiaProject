@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookStoreApiV2.Models;
 
 namespace BookStoreApiV2.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OrdersAPIController : ApiController
     {
         private BookStoreDBEntities db = new BookStoreDBEntities();
@@ -33,6 +35,29 @@ namespace BookStoreApiV2.Controllers
             }
 
             return Ok(order);
+        }
+
+        [ResponseType(typeof(List<Order>))]
+        public IEnumerable<Order> GetOrdersByUserID(int id)
+        {
+            List<Order> orders = db.Orders.Where(o => o.uId == id).ToList();
+            foreach (Order order in orders)
+            {
+                order.items = new List<BookOrder>();
+
+                var bookIds = db.OrderDetails.Where(o => o.oId == order.oId).Select(o => o.bId).ToList();
+                foreach (var bid in bookIds)
+                {
+                    BookOrder bookOrder = new BookOrder()
+                    {
+                        bookId = bid,
+                        qty = db.OrderDetails.FirstOrDefault(o => o.bId == bid && o.oId==order.oId).bQuantity
+                    };
+                    bookOrder.book = db.Books.FirstOrDefault(b => b.bId == bid);
+                    order.items.Add(bookOrder);
+                }
+            }
+            return orders;
         }
 
         // PUT: api/OrdersAPI/5
@@ -78,9 +103,29 @@ namespace BookStoreApiV2.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            order.orDateAndTime = DateTime.Now.Date;
+            
             db.Orders.Add(order);
             db.SaveChanges();
+
+            int orderId = (db.Orders.OrderByDescending(o => o.oId).Take(1)).First().oId;
+            foreach (BookOrder book in order.items)
+            {
+                Book bk = db.Books.FirstOrDefault(b => b.bId == book.bookId);
+                
+                OrderDetail orderDetail = new OrderDetail()
+                {
+                    oId = orderId,
+                    uId = order.uId,
+                    bId = bk.bId,
+                    bISBN = bk.bISBN,
+                    bPrice = bk.bPrice,
+                    bQuantity = book.qty
+                };
+
+                db.OrderDetails.Add(orderDetail);
+                db.SaveChanges();
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = order.oId }, order);
         }

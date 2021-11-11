@@ -265,9 +265,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ExtendedClasses.cs" />
-    <Compile Include="Models\Log.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginCredential.cs">
       <DependentUpon>Model1.tt</DependentUpon>

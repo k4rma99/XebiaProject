@@ -81,7 +81,7 @@ namespace BookStoreApiV2.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
             user.uAccountStatus = "activated";
             user.uRole = "user";
 
